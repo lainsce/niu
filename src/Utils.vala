@@ -45,7 +45,7 @@ namespace Niu.Utils {
             val = ((e - d) / 8640 / 10000) / 10000;
             string val_fmt = (val * 10000000).to_string ();
 
-            neralie = "%s:%s".printf(val_fmt.substring(2, 3), val_fmt.substring(4, 3));
+            neralie = "%s:%s".printf(val_fmt.substring(2, 3), val_fmt.substring(5, 3));
             return neralie;
         }
     }
