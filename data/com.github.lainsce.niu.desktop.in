@@ -1,7 +1,7 @@
 [Desktop Entry]
 Name=Niu
 Comment=Track date and time in an innovative way
-Exec=com.github.lainsce.niu
+Exec=com.github.lainsce.niu %U
 Icon=com.github.lainsce.niu
 Keywords=Time;Date;Innovation;
 Terminal=false

@@ -31,7 +31,7 @@ public class Niu.Indicator : Wingpanel.Indicator {
             close ();
             dbusclient.interface.show_niu ();
         });
-
+        popover_widget.show_all ();
     }
 
     /* Constructor */

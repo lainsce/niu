@@ -20,6 +20,7 @@ namespace Niu {
         public int window_x { get; set; }
         public int window_y { get; set; }
         public bool indicator_state { get; set; }
+        public bool background_state { get; set; }
 
         private static AppSettings? instance;
         public static unowned AppSettings get_default () {

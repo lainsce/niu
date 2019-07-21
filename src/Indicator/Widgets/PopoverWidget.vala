@@ -15,6 +15,7 @@ public class Niu.Widgets.PopoverWidget : Gtk.Grid {
 
         show_niu_button = new Gtk.ModelButton ();
         show_niu_button.text = _("Show Niu…");
+        show_niu_button.hexpand = true;
         quit_niu_button = new Gtk.ModelButton ();
         quit_niu_button.text = _("Quit Niu");
         show_niu_button.clicked.connect (() => show_niu ());
@@ -24,7 +25,7 @@ public class Niu.Widgets.PopoverWidget : Gtk.Grid {
         add (show_niu_button);
         add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         add (quit_niu_button);
-        expand = true;
+
         show_all ();
     }
 }

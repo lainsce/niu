@@ -21,6 +21,7 @@ namespace Niu {
         private Gtk.Label a_label;
         private Gtk.Label n_label;
         private Gtk.Switch show_indicator_switch;
+        private Gtk.Switch background_switch;
         private Utils.Resources res;
 
         public DBusServer dbusserver;
@@ -34,6 +35,8 @@ namespace Niu {
                          width_request: 500,
                          border_width: 6
             );
+
+            this.set_application (application);
 
             updater = Updater.get_default ();
             dbusserver = DBusServer.get_default();
@@ -134,13 +137,34 @@ namespace Niu {
             show_indicator_switch = new Gtk.Switch ();
             show_indicator_switch.state = settings.indicator_state;
 
+            var background_label = new Gtk.Label (_("Start in background:"));
+            background_label.halign = Gtk.Align.END;
+
+            background_switch = new Gtk.Switch ();
+            background_switch.state = settings.background_state;
+            set_background_switch_state ();
+
+            background_switch.notify["active"].connect (() => {
+                settings.background_state = background_switch.state;
+
+                if (!show_indicator_switch.active && background_switch.active) {
+                    show_indicator_switch.active = true;
+                }
+            });
+
             show_indicator_switch.notify["active"].connect (() => {
                 settings.indicator_state = show_indicator_switch.state;
                 dbusserver.indicator_state (show_indicator_switch.state);
+
+                if (!show_indicator_switch.active && background_switch.active) {
+                    background_switch.active = false;
+                }
             });
 
             preferences_grid.attach (indicator_label, 0, 0, 1, 1);
             preferences_grid.attach (show_indicator_switch, 1, 0, 1, 1);
+            preferences_grid.attach (background_label, 0, 1, 1, 1);
+            preferences_grid.attach (background_switch, 1, 1, 1, 1);
 
             preferences_grid.show_all ();
 
@@ -167,6 +191,22 @@ namespace Niu {
             if (x != -1 && y != -1) {
                 move (x, y);
             }
+
+            this.delete_event.connect (() => {
+                    int window_x;
+                    int window_y;
+                    get_position (out window_x, out window_y);
+                    settings.window_x = window_x;
+                    settings.window_y = window_y;
+
+                    if (settings.indicator_state == true) {
+                        this.hide_on_delete ();
+                    } else {
+                        dbusserver.indicator_state (false);
+                        application.quit ();
+                    }
+                    return true;
+            });
         }
 
         public bool set_labels () {
@@ -176,14 +216,12 @@ namespace Niu {
             return true;
         }
 
-        public override bool delete_event (Gdk.EventAny event) {
-            int x, y;
-            get_position (out x, out y);
-            var settings = AppSettings.get_default ();
-            settings.window_x = x;
-            settings.window_y = y;
-            settings.indicator_state = show_indicator_switch.state;
-            return false;
+        private void set_background_switch_state () {
+            background_switch.sensitive = show_indicator_switch.active;
+
+            if (!show_indicator_switch.active) {
+                background_switch.state = false;
+            }
         }
     }
 }

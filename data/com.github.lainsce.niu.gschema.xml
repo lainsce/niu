@@ -15,5 +15,10 @@
 		  <summary>To show Indicator or not</summary>
 		  <description>To show Indicator or not</description>
 		</key>
+		<key type='b' name="background-state">
+		  <default>false</default>
+		  <summary>To stay in background or not</summary>
+		  <description>To stay in background or not</description>
+		</key>
 	</schema>
 </schemalist>
