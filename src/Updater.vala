@@ -1,37 +1,39 @@
 namespace Niu {
     public class Updater : Object {
         private static GLib.Once<Updater> instance;
-        private MainWindow? window;
-        public static unowned Updater get_default (MainWindow window) {
+        public static unowned Updater get_default () {
             return instance.once (() => {
-                return new Updater (window);
+                return new Updater ();
             });
         }
 
         private int interval = 1; // in secs
 
-        private Utils.Resources sysres;
+        private Utils.Resources res;
 
-        public signal void update (Utils.Resources sysres);
-
-        public Updater (MainWindow window) {
-            this.window = window;
-        }
+        public signal void update (Utils.Resources res);
 
         construct {
             Timeout.add_seconds (interval, update_resources);
         }
 
         private bool update_resources () {
-            sysres = Utils.Resources () {
-                arvelieneralie = arvelieneralie ()
+            res = Utils.Resources () {
+                ar = ar (),
+                ne = ne ()
             };
-            update (sysres);
+            update (res);
             return true;
         }
 
-        public string arvelieneralie () {
-            return window.get_neralie_time_str (window.date) + window.get_arvelie_calendar_str (window.date);
+        public string ne () {
+            var date = new GLib.DateTime.now ();
+            return res.get_neralie_time_str (date);
+        }
+
+        public string ar () {
+            var date = new GLib.DateTime.now ();
+            return res.get_arvelie_calendar_str (date);
         }
     }
 }

@@ -21,13 +21,10 @@ namespace Niu {
         private Gtk.Label a_label;
         private Gtk.Label n_label;
         private Gtk.Switch show_indicator_switch;
-
-        public string arvelie;
-        public string neralie;
+        private Utils.Resources res;
 
         public DBusServer dbusserver;
         public Updater updater;
-        public GLib.DateTime date;
 
         public MainWindow (Gtk.Application application) {
             GLib.Object (application: application,
@@ -38,12 +35,12 @@ namespace Niu {
                          border_width: 6
             );
 
-            updater = Updater.get_default (this);
+            updater = Updater.get_default ();
             dbusserver = DBusServer.get_default();
             var settings = AppSettings.get_default ();
 
-            updater.update.connect ((sysres) => {
-                dbusserver.update (sysres);
+            updater.update.connect ((res) => {
+                dbusserver.update (res);
                 dbusserver.indicator_state (settings.indicator_state);
             });
 
@@ -61,7 +58,6 @@ namespace Niu {
             get_style_context ().add_class ("rounded");
             get_style_context ().add_class ("niu-window");
             var settings = AppSettings.get_default ();
-            date = new GLib.DateTime.now ();
 
             var provider = new Gtk.CssProvider ();
             provider.load_from_resource ("/com/github/lainsce/niu/stylesheet.css");
@@ -160,12 +156,11 @@ namespace Niu {
 
             add (main_grid);
 
-            set_labels (date);
-
-            Timeout.add_seconds (10, () => {
-                set_labels (date);
-                return false;
+            Timeout.add_seconds (1, () => {
+                set_labels ();
             });
+
+            set_labels ();
 
             int x = settings.window_x;
             int y = settings.window_y;
@@ -174,48 +169,11 @@ namespace Niu {
             }
         }
 
-        public void set_labels (GLib.DateTime date) {
-            n_label.set_label (get_neralie_time_str (date));
-            a_label.set_label (get_arvelie_calendar_str (date));
-        }
-
-        public string get_arvelie_calendar_str (GLib.DateTime date) {
-            string resm = "";
-            double resd;
-            string m = "";
-            string d = "";
-            var doty = date.format ("%j").to_double ();
-            var y = date.get_year ().to_string ().substring (2, 2);
-            if (doty == 364 || doty == 365) {
-                m = "+";
-            } else {
-                // Ascii: 97 = A
-                double l = Math.floor(((doty) / 364) * 26);
-                double an = 97 + l;
-                resm = ((char)an).to_string ().up ();
-                m = resm;
-            }
-            if (doty == 365) {
-                d = "1";
-            } else if (doty == 366) {
-                d = "2";
-            } else {
-                resd = ((doty % 14) + 1);
-                if (resd < 10) {
-                    d = "0" + resd.to_string ();
-                } else {
-                    d = resd.to_string ();
-                }
-            }
-            arvelie = "%s%s%s".printf (y, m, d);
-            return arvelie;
-        }
-
-        public string get_neralie_time_str (GLib.DateTime date) {
-            string ms = date.get_microsecond ().to_string ();
-            string val = (ms.to_double () / 8640 / 10000).to_string ();
-            neralie = "%s:%s".printf(val.substring(2, 3), val.substring(5, 3));
-            return neralie;
+        public bool set_labels () {
+            var date = new GLib.DateTime.now_local ();
+            n_label.set_label (res.get_neralie_time_str (date));
+            a_label.set_label (res.get_arvelie_calendar_str (date));
+            return true;
         }
 
         public override bool delete_event (Gdk.EventAny event) {

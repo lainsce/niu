@@ -22,7 +22,7 @@ public class Niu.DBusServer : Object {
             (connection) => on_bus_aquired (connection),
             () => { },
             null
-            );
+        );
     }
 
     public void quit_niu () throws IOError, DBusError {

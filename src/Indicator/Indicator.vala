@@ -17,8 +17,9 @@ public class Niu.Indicator : Wingpanel.Indicator {
 
         dbusclient.interface.indicator_state.connect((state) => this.visible = state);
 
-        dbusclient.interface.update.connect((sysres) => {
-            display_widget.time = sysres.arvelieneralie;
+        dbusclient.interface.update.connect((res) => {
+            display_widget.time.time_str = res.ne;
+            popover_widget.cal.cal_str = res.ar;
         });
 
         popover_widget.quit_niu.connect (() => {

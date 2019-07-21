@@ -6,17 +6,26 @@ public class Niu.Widgets.PopoverWidget : Gtk.Grid {
     public signal void quit_niu ();
     public signal void show_niu ();
 
+    public CalWidget cal;
+
     construct {
         orientation = Gtk.Orientation.VERTICAL;
 
+        cal = new CalWidget ();
+
         show_niu_button = new Gtk.ModelButton ();
+        show_niu_button.text = _("Show Niu…");
         quit_niu_button = new Gtk.ModelButton ();
+        quit_niu_button.text = _("Quit Niu");
         show_niu_button.clicked.connect (() => show_niu ());
         quit_niu_button.clicked.connect (() => quit_niu ());
 
+        add (cal);
         add (show_niu_button);
-        add (new Wingpanel.Widgets.Separator ());
+        add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         add (quit_niu_button);
+        expand = true;
+        show_all ();
     }
 }
 
