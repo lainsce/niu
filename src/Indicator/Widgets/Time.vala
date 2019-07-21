@@ -7,6 +7,7 @@ public class Niu.Widgets.TimeWidget : Gtk.Box {
     construct {
         var icon = new Gtk.Image ();
         icon.gicon = new ThemedIcon ("pager-checked-symbolic");
+        icon.icon_size = 3;
         time_label = new Gtk.Label ("N/A");
         time_label.margin = 1;
 
