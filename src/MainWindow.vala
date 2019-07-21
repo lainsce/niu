@@ -74,8 +74,8 @@ namespace Niu {
             titlebar_style_context.add_class ("niu-toolbar");
             set_titlebar (titlebar);
 
-            //TRANSLATORS: Do not translate Horarie as it is a proper name!
-            var label = new Gtk.Label (_("In the Horarie system, it is now…"));
+            //TRANSLATORS: Do not translate Time as it is a proper name!
+            var label = new Gtk.Label (_("In the Time system, it is now…"));
             label.halign = Gtk.Align.START;
             label.hexpand = true;
             var label_style_context = label.get_style_context ();
@@ -100,8 +100,8 @@ namespace Niu {
             help_button.set_image (new Gtk.Image.from_icon_name ("help-contents-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
             help_button.set_always_show_image (true);
             help_button.vexpand = false;
-            //TRANSLATORS: Do not translate Horarie as it is a proper name!
-            help_button.tooltip_text = _("Learn about Horarie");
+            //TRANSLATORS: Do not translate Time as it is a proper name!
+            help_button.tooltip_text = _("Learn about Time");
             var help_button_style_context = help_button.get_style_context ();
             help_button_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
             help_button_style_context.add_class ("niu-button");
