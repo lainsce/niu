@@ -12,7 +12,7 @@ namespace Niu.Utils {
             double resd;
             string m = "";
             string d = "";
-            var doty = date.format ("%j").to_double ();
+            var doty = double.parse(date.format ("%j"));
             var y = date.get_year ().to_string ().substring (2, 2);
             if (doty == 364 || doty == 365) {
                 m = "+";

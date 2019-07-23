@@ -8,3 +8,4 @@ Terminal=false
 Type=Application
 StartupNotify=true
 Categories=GTK;Utility;
+X-GNOME-UsesNotifications=true

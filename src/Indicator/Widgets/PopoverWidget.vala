@@ -1,9 +1,10 @@
 public class Niu.Widgets.PopoverWidget : Gtk.Grid {
-    /* Button to hide the indicator */
     private Gtk.ModelButton show_niu_button;
+    public Wingpanel.Widgets.Switch start_pomodore_button;
     private Gtk.ModelButton quit_niu_button;
 
     public signal void quit_niu ();
+    public signal void start_pomodore ();
     public signal void show_niu ();
 
     public CalWidget cal;
@@ -16,17 +17,26 @@ public class Niu.Widgets.PopoverWidget : Gtk.Grid {
         show_niu_button = new Gtk.ModelButton ();
         show_niu_button.text = _("Show Niu…");
         show_niu_button.hexpand = true;
+        show_niu_button.clicked.connect (() => show_niu ());
+
+        var settings = AppSettings.get_default ();
+        start_pomodore_button = new Wingpanel.Widgets.Switch (_("Start Pomodoro…"), settings.pomodoro);
+        start_pomodore_button.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
+        start_pomodore_button.get_switch ().notify["active"].connect (() => {
+            start_pomodore ();
+            settings.pomodoro = start_pomodore_button.get_switch ().active;
+        });
+
         quit_niu_button = new Gtk.ModelButton ();
         quit_niu_button.text = _("Quit Niu");
-        show_niu_button.clicked.connect (() => show_niu ());
         quit_niu_button.clicked.connect (() => quit_niu ());
 
         add (cal);
         add (show_niu_button);
+        add (start_pomodore_button);
         add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         add (quit_niu_button);
 
         show_all ();
     }
 }
-

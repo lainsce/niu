@@ -12,6 +12,7 @@ public class Niu.DBusServer : Object {
     public signal void indicator_state (bool state);
     public signal void update (Utils.Resources data);
     public signal void quit ();
+    public signal void pomodore (bool state);
     public signal void show ();
 
     construct {
@@ -47,4 +48,3 @@ public class Niu.DBusServer : Object {
 public errordomain DBusServerError {
     SOME_ERROR
 }
-

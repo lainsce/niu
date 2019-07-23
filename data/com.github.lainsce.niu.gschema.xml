@@ -20,5 +20,10 @@
 		  <summary>To stay in background or not</summary>
 		  <description>To stay in background or not</description>
 		</key>
+        <key type='b' name="pomodoro">
+		  <default>false</default>
+		  <summary>To have a Nataniev Pomodoro or not</summary>
+		  <description>To have a Nataniev Pomodoro or not</description>
+		</key>
 	</schema>
 </schemalist>

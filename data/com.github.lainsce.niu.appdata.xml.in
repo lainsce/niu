@@ -9,7 +9,7 @@
         <p>See time and the current date like never before, using a compact and decimal way to show date and time in this applet or on the panel</p>
         <ul>
             <li>Quit anytime with the shortcut Ctrl + Q</li>
-            <li>Stays out of your way in the panel if chosen to</li>
+            <li>Stays out of your way, by an indicator the panel if chosen to</li>
         </ul>
     </description>
     <provides>
@@ -53,6 +53,14 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+        <release version="1.0.1" date="2019-07-24">
+            <description>
+                <p>Release: Rest Up For a While</p>
+                <ul>
+                    <li>Added: Option to start a Pomodoro system in the indicator</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.0.0" date="2019-07-20">
             <description>
                 <p>Release: Tick Tock Clock</p>

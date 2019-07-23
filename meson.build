@@ -1,6 +1,6 @@
 # Name our project
 project('com.github.lainsce.niu', ['vala', 'c'],
-    version: '1.0.0'
+    version: '1.0.1'
 )
 
 # Import main lib files
@@ -9,8 +9,16 @@ i18n = import('i18n')
 
 # Compile the GResources for this project
 asresources = gnome.compile_resources(
-    'as-resources', 'data/style.gresource.xml',
+    'as-resources',
+    'data/style.gresource.xml',
     source_dir: 'data',
+    c_name: 'as'
+)
+
+icon_resources = gnome.compile_resources(
+    'gresource_icons',
+    'data/icons/icon.gresource.xml',
+    source_dir: 'data/icons',
     c_name: 'as'
 )
 
@@ -74,6 +82,7 @@ shared_module(
     'src/Indicator/Widgets/Cal.vala',
     'src/Utils.vala',
     'src/Constants/AppSettings.vala',
+    icon_resources,
     c_args: c_args,
     dependencies: [
         dependency('glib-2.0'),

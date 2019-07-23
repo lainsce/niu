@@ -16,6 +16,9 @@ public class Niu.Indicator : Wingpanel.Indicator {
         dbusclient.niu_appeared.connect (() => this.visible = settings.indicator_state);
 
         dbusclient.interface.indicator_state.connect((state) => this.visible = state);
+        dbusclient.interface.start_pomodore.connect((state) => {
+            state = settings.pomodoro;
+        });
 
         dbusclient.interface.update.connect((res) => {
             display_widget.time.time_str = res.ne;
@@ -25,6 +28,10 @@ public class Niu.Indicator : Wingpanel.Indicator {
         popover_widget.quit_niu.connect (() => {
             dbusclient.interface.quit_niu ();
             this.visible = false;
+        });
+
+        popover_widget.start_pomodore.connect (() => {
+            dbusclient.interface.start_pomodore.connect((state) => state = settings.pomodoro);
         });
 
         popover_widget.show_niu.connect (() => {
@@ -82,4 +89,3 @@ public Wingpanel.Indicator? get_indicator (Module module, Wingpanel.IndicatorMan
     /* Return the newly created indicator */
     return indicator;
 }
-

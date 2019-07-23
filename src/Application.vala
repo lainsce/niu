@@ -18,8 +18,8 @@
 *
 */
 namespace Niu {
-    public class Application : Granite.Application {
-        public MainWindow app_window;
+    public class Application : Gtk.Application {
+        public MainWindow? app_window = null;
         private static bool status_background = false;
         private static bool start_in_background = false;
         public string[] args;
@@ -37,13 +37,9 @@ namespace Niu {
             status_background = status_indicator;
         }
 
-        construct {
-            exec_name = "com.github.lainsce.niu";
-            app_launcher = "com.github.lainsce.niu";
-        }
-
         protected override void activate () {
             var settings = AppSettings.get_default ();
+            app_window = new MainWindow (this);
             // only have one window
             if (get_windows () != null) {
                 app_window.show_all ();
@@ -62,8 +58,6 @@ namespace Niu {
             } else {
                 app_window.show_all ();
             }
-
-            app_window = new MainWindow (this);
             app_window.show_all ();
         }
 

@@ -5,9 +5,21 @@ public class Niu.Widgets.TimeWidget : Gtk.Box {
     }
 
     construct {
+        Gtk.IconTheme.get_default().add_resource_path("/com/github/lainsce/niu/icons");
+        var settings = AppSettings.get_default ();
         var icon = new Gtk.Image ();
-        icon.gicon = new ThemedIcon ("pager-checked-symbolic");
-        icon.icon_size = 3;
+        if (settings.pomodoro) {
+            icon.set_from_icon_name ("pomodoro-symbolic", (Gtk.IconSize)3);
+        } else {
+            icon.set_from_icon_name ("no-pomodoro-symbolic", (Gtk.IconSize)3);
+        }
+        settings.changed.connect (() => {
+            if (settings.pomodoro) {
+                icon.set_from_icon_name ("pomodoro-symbolic", (Gtk.IconSize)3);
+            } else {
+                icon.set_from_icon_name ("no-pomodoro-symbolic", (Gtk.IconSize)3);
+            }
+        });
         time_label = new Gtk.Label ("N/A");
         time_label.margin = 1;
 
@@ -19,4 +31,3 @@ public class Niu.Widgets.TimeWidget : Gtk.Box {
         orientation = Gtk.Orientation.HORIZONTAL;
     }
 }
-

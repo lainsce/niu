@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<gresources>
+    <gresource prefix="/com/github/lainsce/niu/icons">
+        <file compressed="true" preprocess="xml-stripblanks">no-pomodoro-symbolic.svg</file>
+        <file compressed="true" preprocess="xml-stripblanks">pomodoro-symbolic.svg</file>
+    </gresource>
+</gresources>

@@ -19,4 +19,3 @@ public class Niu.Widgets.CalWidget : Gtk.Box {
         orientation = Gtk.Orientation.HORIZONTAL;
     }
 }
-
