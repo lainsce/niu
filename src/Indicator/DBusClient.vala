@@ -2,7 +2,6 @@
 public interface Niu.DBusClientInterface : Object {
     public abstract void quit_niu () throws GLib.IOError, GLib.DBusError;
     public abstract void show_niu () throws GLib.IOError, GLib.DBusError;
-    public signal void start_pomodore (bool state);
     public signal void update (Utils.Resources data);
     public signal void indicator_state (bool state);
 }

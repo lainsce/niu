@@ -20,10 +20,15 @@ namespace Niu {
         private bool update_resources () {
             res = Utils.Resources () {
                 ar = ar (),
-                ne = ne ()
+                ne = ne (),
+                po = po ()
             };
             update (res);
             return true;
+        }
+
+        public bool po () {
+            return res.get_pomodoro_state ();
         }
 
         public string ne () {
@@ -37,4 +42,3 @@ namespace Niu {
         }
     }
 }
-

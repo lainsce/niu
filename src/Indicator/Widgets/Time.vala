@@ -6,8 +6,9 @@ public class Niu.Widgets.TimeWidget : Gtk.Box {
 
     construct {
         Gtk.IconTheme.get_default().add_resource_path("/com/github/lainsce/niu/icons");
-        var settings = AppSettings.get_default ();
+
         var icon = new Gtk.Image ();
+        var settings = AppSettings.get_default ();
         if (settings.pomodoro) {
             icon.set_from_icon_name ("pomodoro-symbolic", (Gtk.IconSize)3);
         } else {

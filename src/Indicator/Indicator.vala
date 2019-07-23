@@ -11,29 +11,21 @@ public class Niu.Indicator : Wingpanel.Indicator {
         popover_widget = new Widgets.PopoverWidget ();
 
         dbusclient = DBusClient.get_default ();
-
         dbusclient.niu_vanished.connect (() => this.visible = false);
         dbusclient.niu_appeared.connect (() => this.visible = settings.indicator_state);
-
         dbusclient.interface.indicator_state.connect((state) => this.visible = state);
-        dbusclient.interface.start_pomodore.connect((state) => {
-            state = settings.pomodoro;
-        });
-
         dbusclient.interface.update.connect((res) => {
             display_widget.time.time_str = res.ne;
             popover_widget.cal.cal_str = res.ar;
+            if (res.po) {
+                popover_widget.online = res.po;
+            }
         });
 
         popover_widget.quit_niu.connect (() => {
             dbusclient.interface.quit_niu ();
             this.visible = false;
         });
-
-        popover_widget.start_pomodore.connect (() => {
-            dbusclient.interface.start_pomodore.connect((state) => state = settings.pomodoro);
-        });
-
         popover_widget.show_niu.connect (() => {
             close ();
             dbusclient.interface.show_niu ();

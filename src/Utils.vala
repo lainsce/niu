@@ -1,11 +1,19 @@
 namespace Niu.Utils {
-    public string arvelie;
-    public string neralie;
-    public double val;
-
     public struct Resources {
         public string ar;
         public string ne;
+        public double va;
+        public bool po;
+
+        public bool get_pomodoro_state () {
+            var settings = AppSettings.get_default ();
+            if (settings.pomodoro) {
+                po = true;
+            } else {
+                po = false;
+            }
+            return po;
+        }
 
         public string get_arvelie_calendar_str (GLib.DateTime date) {
             string resm = "";
@@ -35,17 +43,17 @@ namespace Niu.Utils {
                     d = resd.to_string ();
                 }
             }
-            arvelie = "%s%s%s".printf (y, m, d);
+            var arvelie = "%s%s%s".printf (y, m, d);
             return arvelie;
         }
 
         public string get_neralie_time_str (GLib.DateTime date) {
             double e = date.to_unix ();
             double d = new DateTime.local (date.get_year (), date.get_month (), date.get_day_of_month (), 0, 0, 0).to_unix ();
-            val = ((e - d) / 8640 / 10000) / 10000;
-            string val_fmt = (val * 10000000).to_string ();
+            va = ((e - d) / 8640 / 10000) / 10000;
+            string val_fmt = (va * 10000000).to_string ();
 
-            neralie = "%s:%s".printf(val_fmt.substring(2, 3), val_fmt.substring(5, 3));
+            var neralie = "%s:%s".printf(val_fmt.substring(2, 3), val_fmt.substring(5, 3));
             return neralie;
         }
     }

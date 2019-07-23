@@ -45,49 +45,28 @@ namespace Niu {
             updater.update.connect ((res) => {
                 dbusserver.update (res);
                 dbusserver.indicator_state (settings.indicator_state);
-                dbusserver.pomodore (settings.pomodoro);
+                if (res.po) {
+                    Timeout.add_seconds (777, () => {
+                        pomodore_rest_notification ();
+                        return false;
+                    });
+                    Timeout.add_seconds (1555, () => {
+                        pomodore_drink_notification ();
+                        return false;
+                    });
+                    Timeout.add_seconds (2332, () => {
+                        pomodore_stand_notification ();
+                        return false;
+                    });
+                }
             });
-
             dbusserver.quit.connect (() => application.quit());
             dbusserver.show.connect (() => {
                 this.deiconify();
                 this.present();
                 this.show_all ();
             });
-
-            if (settings.pomodoro) {
-                Timeout.add_seconds (777, () => {
-                    pomodore_rest_notification ();
-                    return true;
-                });
-                Timeout.add_seconds (1555, () => {
-                    pomodore_drink_notification ();
-                    return true;
-                });
-                Timeout.add_seconds (2332, () => {
-                    pomodore_stand_notification ();
-                    return true;
-                });
-            }
-            settings.changed.connect (() => {
-                if (settings.pomodoro) {
-                    Timeout.add_seconds (777, () => {
-                        pomodore_rest_notification ();
-                        return true;
-                    });
-                    Timeout.add_seconds (1555, () => {
-                        pomodore_drink_notification ();
-                        return true;
-                    });
-                    Timeout.add_seconds (2332, () => {
-                        pomodore_stand_notification ();
-                        return true;
-                    });
-                }
-            });
-
             dbusserver.indicator_state (settings.indicator_state);
-            dbusserver.pomodore (settings.pomodoro);
         }
 
         construct {
@@ -241,29 +220,32 @@ namespace Niu {
             });
         }
 
-        public void pomodore_stand_notification () {
+        public bool pomodore_stand_notification () {
             var notification = new GLib.Notification ("Time's up!");
             notification.set_body (_("Go stand and stretch for a while before continuing."));
             var icon = new GLib.ThemedIcon ("appointment");
             notification.set_icon (icon);
 
             application.send_notification ("com.github.lainsce.niu", notification);
+            return true;
         }
-        public void pomodore_drink_notification () {
+        public bool pomodore_drink_notification () {
             var notification = new GLib.Notification ("Time's up!");
             notification.set_body (_("Go drink something before continuing."));
             var icon = new GLib.ThemedIcon ("appointment");
             notification.set_icon (icon);
 
             application.send_notification ("com.github.lainsce.niu", notification);
+            return true;
         }
-        public void pomodore_rest_notification () {
+        public bool pomodore_rest_notification () {
             var notification = new GLib.Notification ("Time's up!");
             notification.set_body (_("Go rest for a while before continuing."));
             var icon = new GLib.ThemedIcon ("appointment");
             notification.set_icon (icon);
 
             application.send_notification ("com.github.lainsce.niu", notification);
+            return true;
         }
 
         public bool set_labels () {
