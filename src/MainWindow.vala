@@ -47,14 +47,15 @@ namespace Niu {
             rest = true;
             drink = true;
             stand = true;
-            set_timeouts ();
-            settings.changed.connect (() => {
-               set_timeouts ();
-            });
-
             updater.update.connect ((res) => {
                 dbusserver.update (res);
                 dbusserver.indicator_state (settings.indicator_state);
+                if (res.po) {
+                    set_timeouts ();
+                    settings.changed.connect (() => {
+                       set_timeouts ();
+                    });
+                }
             });
             dbusserver.quit.connect (() => application.quit());
             dbusserver.show.connect (() => {
