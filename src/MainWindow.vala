@@ -23,6 +23,9 @@ namespace Niu {
         private Gtk.Switch show_indicator_switch;
         private Gtk.Switch background_switch;
         private Utils.Resources res;
+        private bool rest;
+        private bool drink;
+        private bool stand;
 
         public DBusServer dbusserver;
         public Updater updater;
@@ -35,30 +38,23 @@ namespace Niu {
                          width_request: 500,
                          border_width: 6
             );
-
             this.set_application (application);
 
             updater = Updater.get_default ();
             dbusserver = DBusServer.get_default();
             var settings = AppSettings.get_default ();
 
+            rest = true;
+            drink = true;
+            stand = true;
+            set_timeouts ();
+            settings.changed.connect (() => {
+               set_timeouts ();
+            });
+
             updater.update.connect ((res) => {
                 dbusserver.update (res);
                 dbusserver.indicator_state (settings.indicator_state);
-                if (res.po) {
-                    Timeout.add_seconds (777, () => {
-                        pomodore_rest_notification ();
-                        return false;
-                    });
-                    Timeout.add_seconds (1555, () => {
-                        pomodore_drink_notification ();
-                        return false;
-                    });
-                    Timeout.add_seconds (2332, () => {
-                        pomodore_stand_notification ();
-                        return false;
-                    });
-                }
             });
             dbusserver.quit.connect (() => application.quit());
             dbusserver.show.connect (() => {
@@ -220,32 +216,60 @@ namespace Niu {
             });
         }
 
-        public bool pomodore_stand_notification () {
+        public void set_timeouts () {
+            // This method may be naïve but it works...
+            var settings = AppSettings.get_default ();
+            if (settings.pomodoro) {
+                if (rest) {
+                    Timeout.add_seconds (777, () => {
+                       pomodore_rest_notification ();
+                       rest = false;
+                       return false;
+                    });
+                    if (drink) {
+                        Timeout.add_seconds (1555, () => {
+                           pomodore_drink_notification ();
+                           drink = false;
+                           return false;
+                        });
+                        if (stand) {
+                            Timeout.add_seconds (2332, () => {
+                               pomodore_stand_notification ();
+                               drink = false;
+                               return false;
+                            });
+                            rest = true;
+                            drink = true;
+                            stand = true;
+                        }
+                    }
+                }
+            }
+        }
+
+        public void pomodore_stand_notification () {
             var notification = new GLib.Notification ("Time's up!");
             notification.set_body (_("Go stand and stretch for a while before continuing."));
             var icon = new GLib.ThemedIcon ("appointment");
             notification.set_icon (icon);
 
             application.send_notification ("com.github.lainsce.niu", notification);
-            return true;
         }
-        public bool pomodore_drink_notification () {
+        public void pomodore_drink_notification () {
             var notification = new GLib.Notification ("Time's up!");
             notification.set_body (_("Go drink something before continuing."));
             var icon = new GLib.ThemedIcon ("appointment");
             notification.set_icon (icon);
 
             application.send_notification ("com.github.lainsce.niu", notification);
-            return true;
         }
-        public bool pomodore_rest_notification () {
+        public void pomodore_rest_notification () {
             var notification = new GLib.Notification ("Time's up!");
             notification.set_body (_("Go rest for a while before continuing."));
             var icon = new GLib.ThemedIcon ("appointment");
             notification.set_icon (icon);
 
             application.send_notification ("com.github.lainsce.niu", notification);
-            return true;
         }
 
         public bool set_labels () {
