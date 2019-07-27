@@ -1,0 +1,74 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the extra package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: extra\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-07-27 19:20+0200\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"Language: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=CHARSET\n"
+"Content-Transfer-Encoding: 8bit\n"
+
+#: data/com.github.lainsce.niu.desktop.in:3
+#: data/com.github.lainsce.niu.appdata.xml.in:6
+msgid "Niu"
+msgstr ""
+
+#: data/com.github.lainsce.niu.desktop.in:4
+msgid "Track date and time in an innovative way"
+msgstr ""
+
+#: data/com.github.lainsce.niu.desktop.in:6
+msgid "com.github.lainsce.niu"
+msgstr ""
+
+#: data/com.github.lainsce.niu.desktop.in:7
+msgid "Time;Date;Innovation;"
+msgstr ""
+
+#: data/com.github.lainsce.niu.appdata.xml.in:7
+msgid ""
+"Watch and track date and time in an innovative way with this handy applet"
+msgstr ""
+
+#: data/com.github.lainsce.niu.appdata.xml.in:9
+msgid ""
+"See time and the current date like never before, using a compact and decimal "
+"way to show date and time in this applet or on the panel"
+msgstr ""
+
+#: data/com.github.lainsce.niu.appdata.xml.in:11
+msgid "Quit anytime with the shortcut Ctrl + Q"
+msgstr ""
+
+#: data/com.github.lainsce.niu.appdata.xml.in:12
+msgid "Stays out of your way, by an indicator the panel if chosen to"
+msgstr ""
+
+#: data/com.github.lainsce.niu.appdata.xml.in:18
+msgid "Lains"
+msgstr ""
+
+#: data/com.github.lainsce.niu.appdata.xml.in:58
+msgid "Release: Rest Up For a While"
+msgstr ""
+
+#: data/com.github.lainsce.niu.appdata.xml.in:60
+msgid "Added: Option to start a Pomodoro system in the indicator"
+msgstr ""
+
+#: data/com.github.lainsce.niu.appdata.xml.in:66
+msgid "Release: Tick Tock Clock"
+msgstr ""
+
+#: data/com.github.lainsce.niu.appdata.xml.in:68
+msgid "First stable release."
+msgstr ""
