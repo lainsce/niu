@@ -32,13 +32,15 @@ namespace Niu.Utils {
                 m = resm;
             }
             if (doty == 365) {
-                d = "1";
+                d = "01";
             } else if (doty == 366) {
-                d = "2";
+                d = "02";
             } else {
                 resd = (doty % 14)+1;
-                if (resd < 10) {
+                if (resd < 10 && resd > 0) {
                     d = "0" + resd.to_string ();
+                } else if (resd == 0) {
+                    d = "00"
                 } else {
                     d = resd.to_string ();
                 }
