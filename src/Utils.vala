@@ -20,27 +20,7 @@ namespace Niu.Utils {
             double resd;
             string m = "";
             string d = "";
-            var start = new DateTime.utc (date.get_year (), 1, 1, 0, 0, 0);
-            var diff = (date.to_unix () - start.to_unix ()) + (((Math.fabs(start.get_utc_offset()/60000000)) - (Math.fabs(date.get_utc_offset()/60000000))) * 60 * 1000);
-            var doty = (Math.floor(diff / 86400000) - 1);
-
-            // Debug
-            warning (
-                "\n                DATE_U:  %0.0f
-                DATE_MOFF:  %0.0f
-                UTC_U:  %0.0f
-                UTC_MOFF:  %0.0f
-                DIFF_VAL:  %0.0f
-                DOTY_VAL:  %0.0f"
-                .printf((date.to_unix ()),
-                        (date.get_utc_offset()/60000000),
-                        (start.to_unix ()),
-                        120,
-                        diff,
-                        doty
-                )
-            );
-
+            var doty = double.parse(date.format ("%j"))-1;
             var y = date.get_year ().to_string ().substring (2, 2);
             if (doty == 364 || doty == 365) {
                 m = "+";
@@ -52,9 +32,9 @@ namespace Niu.Utils {
                 m = resm;
             }
             if (doty == 365) {
-                d = "01";
+                d = "1";
             } else if (doty == 366) {
-                d = "02";
+                d = "2";
             } else {
                 resd = (doty % 14)+1;
                 if (resd < 10) {
@@ -72,8 +52,10 @@ namespace Niu.Utils {
             double d = new DateTime.local (date.get_year (), date.get_month (), date.get_day_of_month (), 0, 0, 0).to_unix ();
             va = ((e - d) / 8640 / 10000) / 10000;
             string val_fmt = (va * 10000000).to_string ();
+            string val_pulse = val_fmt.substring(2, 3);
+            string val_beat = val_fmt.substring(5, 3);
 
-            var neralie = "%s:%s".printf(val_fmt.substring(2, 3), val_fmt.substring(5, 3));
+            var neralie = "%s:%s".printf(val_pulse, val_beat);
             return neralie;
         }
     }
