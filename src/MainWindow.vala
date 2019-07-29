@@ -45,15 +45,19 @@ namespace Niu {
             dbusserver = DBusServer.get_default();
             var settings = AppSettings.get_default ();
 
+
+            if (settings.pomodoro) {
+                set_timeouts ();
+            }
+            settings.changed.connect (() => {
+                if (settings.pomodoro) {
+                    set_timeouts ();
+                }
+            });
+
             updater.update.connect ((res) => {
                 dbusserver.update (res);
                 dbusserver.indicator_state (settings.indicator_state);
-                if (res.po) {
-                    set_timeouts ();
-                    settings.changed.connect (() => {
-                       set_timeouts ();
-                    });
-                }
             });
             dbusserver.quit.connect (() => application.quit());
             dbusserver.show.connect (() => {
