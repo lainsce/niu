@@ -55,6 +55,14 @@
     <releases>
         <release version="1.0.1" date="2019-07-24">
             <description>
+                <p>Release: Setup the Clock</p>
+                <ul>
+                    <li>Fixed: backend calculations</li>
+                </ul>
+            </description>
+        </release>
+        <release version="1.0.1" date="2019-07-24">
+            <description>
                 <p>Release: Rest Up For a While</p>
                 <ul>
                     <li>Added: Option to start a Pomodoro system in the indicator</li>
