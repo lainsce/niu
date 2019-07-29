@@ -20,9 +20,27 @@ namespace Niu.Utils {
             double resd;
             string m = "";
             string d = "";
-            var start = new DateTime.local (date.get_year (),0,0,date.get_hour (),date.get_minute (),date.get_seconds ());
-            double diff = (date.to_unix () - start.to_unix ()) + ((1200000 - 12000000) * 60000);
-            int doty = (int)Math.floor(diff / 86400000) - 1;
+            var start = new DateTime.utc (date.get_year (), 1, 1, 0, 0, 0);
+            var diff = (date.to_unix () - start.to_unix ()) + (((Math.fabs(start.get_utc_offset()/60000000)) - (Math.fabs(date.get_utc_offset()/60000000))) * 60 * 1000);
+            var doty = (Math.floor(diff / 86400000) - 1);
+
+            // Debug
+            warning (
+                "\n                DATE_U:  %0.0f
+                DATE_MOFF:  %0.0f
+                UTC_U:  %0.0f
+                UTC_MOFF:  %0.0f
+                DIFF_VAL:  %0.0f
+                DOTY_VAL:  %0.0f"
+                .printf((date.to_unix ()),
+                        (date.get_utc_offset()/60000000),
+                        (start.to_unix ()),
+                        120,
+                        diff,
+                        doty
+                )
+            );
+
             var y = date.get_year ().to_string ().substring (2, 2);
             if (doty == 364 || doty == 365) {
                 m = "+";
@@ -34,9 +52,9 @@ namespace Niu.Utils {
                 m = resm;
             }
             if (doty == 365) {
-                d = "1";
+                d = "01";
             } else if (doty == 366) {
-                d = "2";
+                d = "02";
             } else {
                 resd = (doty % 14)+1;
                 if (resd < 10) {
