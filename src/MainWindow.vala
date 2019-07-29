@@ -23,12 +23,13 @@ namespace Niu {
         private Gtk.Switch show_indicator_switch;
         private Gtk.Switch background_switch;
         private Utils.Resources res;
-        private bool rest;
-        private bool drink;
-        private bool stand;
 
         public DBusServer dbusserver;
         public Updater updater;
+
+        private uint id1 = 0;
+        private uint id2 = 0;
+        private uint id3 = 0;
 
         public MainWindow (Gtk.Application application) {
             GLib.Object (application: application,
@@ -44,9 +45,6 @@ namespace Niu {
             dbusserver = DBusServer.get_default();
             var settings = AppSettings.get_default ();
 
-            rest = true;
-            drink = true;
-            stand = true;
             updater.update.connect ((res) => {
                 dbusserver.update (res);
                 dbusserver.indicator_state (settings.indicator_state);
@@ -218,33 +216,26 @@ namespace Niu {
         }
 
         public void set_timeouts () {
-            // This method may be naïve but it works...
             var settings = AppSettings.get_default ();
             if (settings.pomodoro) {
-                if (rest) {
-                    Timeout.add_seconds (777, () => {
-                       pomodore_rest_notification ();
-                       rest = false;
-                       return false;
-                    });
-                    if (drink) {
-                        Timeout.add_seconds (1555, () => {
-                           pomodore_drink_notification ();
-                           drink = false;
-                           return false;
-                        });
-                        if (stand) {
-                            Timeout.add_seconds (2332, () => {
-                               pomodore_stand_notification ();
-                               drink = false;
-                               return false;
-                            });
-                            rest = true;
-                            drink = true;
-                            stand = true;
-                        }
-                    }
-                }
+                id1 = Timeout.add_seconds (777, () => {
+                    pomodore_rest_notification ();
+                    GLib.Source.remove (this.id2);
+                    GLib.Source.remove (this.id3);
+                    return true;
+                });
+                id2 = Timeout.add_seconds (1555, () => {
+                    pomodore_drink_notification ();
+                    GLib.Source.remove (this.id1);
+                    GLib.Source.remove (this.id3);
+                    return true;
+                });
+                id3 = Timeout.add_seconds (2332, () => {
+                    pomodore_stand_notification ();
+                    GLib.Source.remove (this.id2);
+                    GLib.Source.remove (this.id1);
+                    return true;
+                });
             }
         }
 

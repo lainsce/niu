@@ -40,7 +40,7 @@ namespace Niu.Utils {
                 if (resd < 10 && resd > 0) {
                     d = "0" + resd.to_string ();
                 } else if (resd == 0) {
-                    d = "00"
+                    d = "00";
                 } else {
                     d = resd.to_string ();
                 }
