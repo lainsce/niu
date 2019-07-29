@@ -18,7 +18,7 @@ public class Niu.Indicator : Wingpanel.Indicator {
             display_widget.time.time_str = res.ne;
             popover_widget.cal.cal_str = res.ar;
             if (res.po) {
-                popover_widget.online = res.po;
+                settings.pomodoro = res.po;
             }
         });
 

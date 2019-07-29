@@ -5,7 +5,6 @@ public class Niu.Widgets.PopoverWidget : Gtk.Grid {
 
     public signal void quit_niu ();
     public signal void show_niu ();
-    public bool online;
 
     public CalWidget cal;
 
@@ -20,10 +19,9 @@ public class Niu.Widgets.PopoverWidget : Gtk.Grid {
         show_niu_button.clicked.connect (() => show_niu ());
 
         var settings = AppSettings.get_default ();
-        start_pomodore_button = new Wingpanel.Widgets.Switch (_("Start Pomodoro…"), online);
+        start_pomodore_button = new Wingpanel.Widgets.Switch (_("Start Pomodoro…"), settings.pomodoro);
         start_pomodore_button.get_switch ().notify["active"].connect (() => {
-            online = start_pomodore_button.get_switch ().active;
-            settings.pomodoro = online;
+            settings.pomodoro = start_pomodore_button.get_switch ().state;
         });
 
         quit_niu_button = new Gtk.ModelButton ();
