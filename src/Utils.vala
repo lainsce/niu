@@ -26,8 +26,7 @@ namespace Niu.Utils {
                 m = "+";
             } else {
                 // Ascii: 97 = A
-                double l = Math.floor(((doty) / 364) * 26);
-                double an = 97 + l;
+                double an = 97 + Math.floor(doty / 14);
                 resm = ((char)an).to_string ().up ();
                 m = resm;
             }
