@@ -270,7 +270,12 @@ namespace Niu {
 
         public bool set_labels () {
             var date = new GLib.DateTime.now_local ();
-            n_label.set_label (res.get_neralie_time_str (date));
+            var settings = AppSettings.get_default ();
+            if (settings.show_beats) {
+                n_label.set_label (res.get_neralie_time_str (date));
+            } else {
+                n_label.set_label (res.val_pulse);
+            }
             a_label.set_label (res.get_arvelie_calendar_str (date));
             return true;
         }

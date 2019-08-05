@@ -21,7 +21,8 @@ namespace Niu {
             res = Utils.Resources () {
                 ar = ar (),
                 ne = ne (),
-                po = po ()
+                po = po (),
+                val_pulse = val_pulse ()
             };
             update (res);
             return true;
@@ -39,6 +40,10 @@ namespace Niu {
         public string ar () {
             var date = new GLib.DateTime.now ();
             return res.get_arvelie_calendar_str (date);
+        }
+
+        public string val_pulse () {
+            return res.val_pulse;
         }
     }
 }

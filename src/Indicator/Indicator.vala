@@ -15,7 +15,11 @@ public class Niu.Indicator : Wingpanel.Indicator {
         dbusclient.niu_appeared.connect (() => this.visible = settings.indicator_state);
         dbusclient.interface.indicator_state.connect((state) => this.visible = state);
         dbusclient.interface.update.connect((res) => {
-            display_widget.time.time_str = res.ne;
+            if (settings.show_beats) {
+                display_widget.time.time_str = res.ne;
+            } else {
+                display_widget.time.time_str = res.val_pulse;
+            }
             popover_widget.cal.cal_str = res.ar;
             if (res.po) {
                 settings.pomodoro = res.po;

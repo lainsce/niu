@@ -53,6 +53,15 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+        <release version="1.0.3" date="2019-08-08">
+            <description>
+                <p>Release: Beats and Pulses</p>
+                <ul>
+                    <li>Added: Option to hide Beats</li>
+                    <li>Fixed: Sometimes the clock would display (null)</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.0.2" date="2019-08-01">
             <description>
                 <p>Release: Setup the Clock</p>
