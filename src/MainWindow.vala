@@ -273,9 +273,9 @@ namespace Niu {
             var settings = AppSettings.get_default ();
             if (settings.beats) {
                 n_label.set_label (res.get_neralie_time_str (date));
+                n_label.set_label (res.val_pulse);
             } else {
                 n_label.set_label (res.get_neralie_time_str (date));
-                n_label.set_label (res.val_pulse);
             }
             a_label.set_label (res.get_arvelie_calendar_str (date));
             return true;
