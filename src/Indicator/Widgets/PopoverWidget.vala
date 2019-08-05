@@ -25,10 +25,10 @@ public class Niu.Widgets.PopoverWidget : Gtk.Grid {
             settings.pomodoro = start_pomodore_button.get_switch ().state;
         });
 
-        beats_button = new Wingpanel.Widgets.Switch (_("Show/Hide Beats…"), settings.show_beats);
+        beats_button = new Wingpanel.Widgets.Switch (_("Show Only Beats"), settings.beats);
         beats_button.margin_bottom = 6;
         beats_button.get_switch ().notify["active"].connect (() => {
-            settings.show_beats = beats_button.get_switch ().state;
+            settings.beats = beats_button.get_switch ().state;
         });
 
         quit_niu_button = new Gtk.ModelButton ();

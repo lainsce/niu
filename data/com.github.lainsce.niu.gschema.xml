@@ -25,10 +25,10 @@
 		  <summary>To have a Nataniev Pomodoro or not</summary>
 		  <description>To have a Nataniev Pomodoro or not</description>
 		</key>
-		<key type='b' name="show-beats">
+		<key type='b' name="beats">
 		  <default>true</default>
-		  <summary>To show Beats or not</summary>
-		  <description>To show Beats or not</description>
+		  <summary>To show only Beats or not</summary>
+		  <description>To show only Beats or not</description>
 		</key>
 	</schema>
 </schemalist>

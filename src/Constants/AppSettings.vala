@@ -22,7 +22,7 @@ namespace Niu {
         public bool indicator_state { get; set; }
         public bool background_state { get; set; }
         public bool pomodoro { get; set; }
-        public bool show_beats { get; set; }
+        public bool beats { get; set; }
 
         private static AppSettings? instance;
         public static unowned AppSettings get_default () {

@@ -274,6 +274,7 @@ namespace Niu {
             if (settings.show_beats) {
                 n_label.set_label (res.get_neralie_time_str (date));
             } else {
+                res.get_arvelie_calendar_str (date);
                 n_label.set_label (res.val_pulse);
             }
             a_label.set_label (res.get_arvelie_calendar_str (date));
