@@ -26,7 +26,7 @@
 		  <description>To have a Nataniev Pomodoro or not</description>
 		</key>
 		<key type='b' name="beats">
-		  <default>true</default>
+		  <default>false</default>
 		  <summary>To show only Beats or not</summary>
 		  <description>To show only Beats or not</description>
 		</key>
