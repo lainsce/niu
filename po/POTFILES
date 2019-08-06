@@ -1,1 +1,3 @@
+src/Indicator/Widgets/Cal.vala
+src/Indicator/Widgets/PopoverWidget.vala
 src/MainWindow.vala
