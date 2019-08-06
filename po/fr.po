@@ -35,7 +35,7 @@ msgstr "Quitter Niu"
 
 #: src/MainWindow.vala:89
 msgid "In the Time system, it is now…"
-msgstr "À l'heure du système, il est actuellement…"
+msgstr "Dans le système de Nataniev (Nataniev Time), il est actuellement…"
 
 #: src/MainWindow.vala:115
 msgid "Learn about Time"
