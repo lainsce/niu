@@ -272,8 +272,7 @@ namespace Niu {
             var date = new GLib.DateTime.now_local ();
             var settings = AppSettings.get_default ();
             if (settings.beats) {
-                n_label.set_label (res.get_neralie_time_str (date));
-                n_label.set_label (res.val_pulse);
+                n_label.set_label (res.get_neralie_beat_str (date));
             } else {
                 n_label.set_label (res.get_neralie_time_str (date));
             }

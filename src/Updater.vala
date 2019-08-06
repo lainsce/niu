@@ -22,7 +22,7 @@ namespace Niu {
                 ar = ar (),
                 ne = ne (),
                 po = po (),
-                val_pulse = val_pulse ()
+                bt = bt ()
             };
             update (res);
             return true;
@@ -42,8 +42,9 @@ namespace Niu {
             return res.get_arvelie_calendar_str (date);
         }
 
-        public string val_pulse () {
-            return res.val_pulse;
+        public string bt () {
+            var date = new GLib.DateTime.now ();
+            return res.get_neralie_beat_str (date);
         }
     }
 }
