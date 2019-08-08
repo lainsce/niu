@@ -51,8 +51,8 @@ namespace Niu.Utils {
         public string get_neralie_time_str (GLib.DateTime date) {
             double e = date.to_unix ();
             double d = new DateTime.local (date.get_year (), date.get_month (), date.get_day_of_month (), 0, 0, 0).to_unix ();
-            double va = ((e - d) / 8640 / 10000) / 10000;
-            string val_fmt = (va * 10000000).to_string ();
+            double va = ((e - d) / 8640 / 10000) * 1000;
+            string val_fmt = "%.6f".printf(va);
             string val_pulse = val_fmt.substring(2, 3);
             string val_beat = val_fmt.substring(5, 3);
 
@@ -63,10 +63,12 @@ namespace Niu.Utils {
         public string get_neralie_beat_str (GLib.DateTime date) {
             double e = date.to_unix ();
             double d = new DateTime.local (date.get_year (), date.get_month (), date.get_day_of_month (), 0, 0, 0).to_unix ();
-            double va = ((e - d) / 8640 / 10000) / 10000;
-            string val_fmt = (va * 10000000).to_string ();
+            double va = ((e - d) / 8640 / 10000) * 1000;
+            string val_fmt = "%.6f".printf(va);
             string val_pulse = val_fmt.substring(2, 3);
             return val_pulse;
         }
+
+
     }
 }
