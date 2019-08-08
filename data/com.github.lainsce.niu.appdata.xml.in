@@ -57,7 +57,7 @@
             <description>
                 <p>Release: Beats and Pulses</p>
                 <ul>
-                    <li>Added: Option to hide Beats</li>
+                    <li>Added: Option to show only Beats</li>
                     <li>Fixed: Sometimes the clock would display (null)</li>
                 </ul>
             </description>
