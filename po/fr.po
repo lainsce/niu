@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: com.github.lainsce.niu\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-30 10:46+0200\n"
+"POT-Creation-Date: 2019-08-19 12:01+0200\n"
 "PO-Revision-Date: 2019-07-30 10:30+0200\n"
 "Last-Translator: NathanBnm\n"
 "Language-Team: none\n"
@@ -21,25 +21,29 @@ msgstr ""
 msgid "Current Date"
 msgstr "Date courante"
 
-#: src/Indicator/Widgets/PopoverWidget.vala:17
+#: src/Indicator/Widgets/PopoverWidget.vala:18
 msgid "Show Niu…"
 msgstr "Afficher Niu…"
 
-#: src/Indicator/Widgets/PopoverWidget.vala:22
+#: src/Indicator/Widgets/PopoverWidget.vala:23
 msgid "Start Pomodoro…"
 msgstr "Démarrer Pomodoro…"
 
 #: src/Indicator/Widgets/PopoverWidget.vala:28
+msgid "Show Only Beats"
+msgstr "Afficher uniquement les battements"
+
+#: src/Indicator/Widgets/PopoverWidget.vala:35
 msgid "Quit Niu"
 msgstr "Quitter Niu"
 
 #: src/MainWindow.vala:89
-msgid "In the Time system, it is now…"
+msgid "In the Nataniev Time system, it is now…"
 msgstr "Dans le système de Nataniev (Nataniev Time), il est actuellement…"
 
 #: src/MainWindow.vala:115
-msgid "Learn about Time"
-msgstr "En savoir plus"
+msgid "Learn about Nataniev Time"
+msgstr "En savoir plus sur le système de Nataniev"
 
 #: src/MainWindow.vala:131
 msgid "Settings"

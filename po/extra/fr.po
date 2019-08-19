@@ -7,7 +7,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-30 10:30+0200\n"
+"POT-Creation-Date: 2019-08-19 12:07+0200\n"
 "PO-Revision-Date: 2019-07-30 10:30+0200\n"
 "Last-Translator: NathanBnm\n"
 "Language-Team: none\n"
@@ -38,15 +38,17 @@ msgstr "Heure;Date;Innovation;"
 msgid ""
 "Watch and track date and time in an innovative way with this handy applet"
 msgstr ""
-"Regardez et suivez la date et l'heure de façon innovante avec cette petite application pratique"
+"Regardez et suivez la date et l'heure de façon innovante avec cette petite "
+"application pratique"
 
 #: data/com.github.lainsce.niu.appdata.xml.in:9
 msgid ""
 "See time and the current date like never before, using a compact and decimal "
 "way to show date and time in this applet or on the panel"
 msgstr ""
-"Visualisez l'heure et la date courante comme jamais auparavant, pour afficher la date et l'heure "
-"de façon compacte et décimale dans cette application ou sur le panneau"
+"Visualisez l'heure et la date courante comme jamais auparavant, pour "
+"afficher la date et l'heure de façon compacte et décimale dans cette "
+"application ou sur le panneau"
 
 #: data/com.github.lainsce.niu.appdata.xml.in:11
 msgid "Quit anytime with the shortcut Ctrl + Q"
@@ -54,32 +56,45 @@ msgstr "Quittez l'application à tout moment avec le raccourci Ctrl + Q"
 
 #: data/com.github.lainsce.niu.appdata.xml.in:12
 msgid "Stays out of your way, by an indicator the panel if chosen to"
-msgstr "Reste en dehors de votre chemin avec un indicateur si vous l'avez choisi"
+msgstr ""
+"Reste en dehors de votre chemin avec un indicateur si vous l'avez choisi"
 
 #: data/com.github.lainsce.niu.appdata.xml.in:18
 msgid "Lains"
 msgstr "Lains"
 
 #: data/com.github.lainsce.niu.appdata.xml.in:58
+msgid "Release: Beats and Pulses"
+msgstr "Version : Battements et pulsions"
+
+#: data/com.github.lainsce.niu.appdata.xml.in:60
+msgid "Added: Option to show only Beats"
+msgstr "Ajout : Option pour n'afficher que les battements"
+
+#: data/com.github.lainsce.niu.appdata.xml.in:61
+msgid "Fixed: Sometimes the clock would display (null)"
+msgstr "Correction : Parfois l'horloge affichait (null)"
+
+#: data/com.github.lainsce.niu.appdata.xml.in:67
 msgid "Release: Setup the Clock"
 msgstr "Version : Réglage de l'horloge"
 
-#: data/com.github.lainsce.niu.appdata.xml.in:60
+#: data/com.github.lainsce.niu.appdata.xml.in:69
 msgid "Fixed: backend calculations"
 msgstr "Correction : Calculs en arrière-plan"
 
-#: data/com.github.lainsce.niu.appdata.xml.in:66
+#: data/com.github.lainsce.niu.appdata.xml.in:75
 msgid "Release: Rest Up For a While"
 msgstr "Version : Reposez-vous un moment"
 
-#: data/com.github.lainsce.niu.appdata.xml.in:68
+#: data/com.github.lainsce.niu.appdata.xml.in:77
 msgid "Added: Option to start a Pomodoro system in the indicator"
 msgstr "Ajout : Option pour démarrer Pomodoro dans l'indicateur"
 
-#: data/com.github.lainsce.niu.appdata.xml.in:74
+#: data/com.github.lainsce.niu.appdata.xml.in:83
 msgid "Release: Tick Tock Clock"
 msgstr "Version : Horloge Tic Toc"
 
-#: data/com.github.lainsce.niu.appdata.xml.in:76
+#: data/com.github.lainsce.niu.appdata.xml.in:85
 msgid "First stable release."
 msgstr "Première version stable."
