@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: extra\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2019-07-30 10:30+0200\n"
+"POT-Creation-Date: 2019-08-19 12:07+0200\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -58,25 +58,37 @@ msgid "Lains"
 msgstr ""
 
 #: data/com.github.lainsce.niu.appdata.xml.in:58
-msgid "Release: Setup the Clock"
+msgid "Release: Beats and Pulses"
 msgstr ""
 
 #: data/com.github.lainsce.niu.appdata.xml.in:60
+msgid "Added: Option to show only Beats"
+msgstr ""
+
+#: data/com.github.lainsce.niu.appdata.xml.in:61
+msgid "Fixed: Sometimes the clock would display (null)"
+msgstr ""
+
+#: data/com.github.lainsce.niu.appdata.xml.in:67
+msgid "Release: Setup the Clock"
+msgstr ""
+
+#: data/com.github.lainsce.niu.appdata.xml.in:69
 msgid "Fixed: backend calculations"
 msgstr ""
 
-#: data/com.github.lainsce.niu.appdata.xml.in:66
+#: data/com.github.lainsce.niu.appdata.xml.in:75
 msgid "Release: Rest Up For a While"
 msgstr ""
 
-#: data/com.github.lainsce.niu.appdata.xml.in:68
+#: data/com.github.lainsce.niu.appdata.xml.in:77
 msgid "Added: Option to start a Pomodoro system in the indicator"
 msgstr ""
 
-#: data/com.github.lainsce.niu.appdata.xml.in:74
+#: data/com.github.lainsce.niu.appdata.xml.in:83
 msgid "Release: Tick Tock Clock"
 msgstr ""
 
-#: data/com.github.lainsce.niu.appdata.xml.in:76
+#: data/com.github.lainsce.niu.appdata.xml.in:85
 msgid "First stable release."
 msgstr ""
