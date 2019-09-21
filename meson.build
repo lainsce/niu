@@ -1,6 +1,6 @@
 # Name our project
 project('com.github.lainsce.niu', ['vala', 'c'],
-    version: '1.0.3'
+    version: '1.1.2'
 )
 
 # Import main lib files
