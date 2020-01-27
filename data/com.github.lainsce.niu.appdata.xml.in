@@ -53,6 +53,15 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+        <release version="1.1.0" date="2020-01-30">
+            <description>
+                <p>Release: Conversion of Energy</p>
+                <ul>
+                    <li>Added: Converters of Date and Time to the Nataniev System</li>
+                    <li>Minor backend fixes</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.0.4" date="2019-08-08">
             <description>
                 <p>Release: World Clock</p>

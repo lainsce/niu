@@ -23,6 +23,7 @@ namespace Niu {
         private static bool status_background = false;
         private static bool start_in_background = false;
         public string[] args;
+        public static GLib.Settings gsettings;
 
         private const GLib.OptionEntry[] cmd_options = {
         // --start-in-background
@@ -37,8 +38,11 @@ namespace Niu {
             status_background = status_indicator;
         }
 
+        static construct {
+            gsettings = new GLib.Settings ("com.github.lainsce.niu");
+        }
+
         protected override void activate () {
-            var settings = AppSettings.get_default ();
             app_window = new MainWindow (this);
             // only have one window
             if (get_windows () != null) {
@@ -48,13 +52,13 @@ namespace Niu {
             }
 
             // start in background with indicator
-            if (status_background || settings.background_state) {
-                if (!settings.indicator_state) {
-                    settings.indicator_state = true;
+            if (status_background || gsettings.get_boolean ("background_state")) {
+                if (!gsettings.get_boolean ("indicator_state")) {
+                    gsettings.set_boolean ("indicator_state", true);
                 }
 
                 app_window.hide ();
-                settings.background_state = true;
+                gsettings.set_boolean ("background_state", true);
             } else {
                 app_window.show_all ();
             }

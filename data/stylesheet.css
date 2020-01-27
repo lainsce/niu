@@ -33,3 +33,16 @@
     font-weight: 300;
     font-size: 3.33em;
 }
+
+.niu-sts {
+    background-color: #666;
+    border: 1px solid transparent;
+}
+
+.niu-sts > * {
+    box-shadow: none;
+}
+
+.niu-sts > * > * {
+    color: #CCC;
+}

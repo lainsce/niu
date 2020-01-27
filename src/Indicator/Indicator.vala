@@ -5,36 +5,43 @@ public class Niu.Indicator : Wingpanel.Indicator {
     private DBusClient dbusclient;
 
     construct {
-        var settings = AppSettings.get_default ();
         this.visible = false;
         display_widget = new Widgets.DisplayWidget ();
         popover_widget = new Widgets.PopoverWidget ();
 
         dbusclient = DBusClient.get_default ();
         dbusclient.niu_vanished.connect (() => this.visible = false);
-        dbusclient.niu_appeared.connect (() => this.visible = settings.indicator_state);
+        dbusclient.niu_appeared.connect (() => this.visible = Niu.Application.gsettings.get_boolean ("indicator_state"));
         dbusclient.interface.indicator_state.connect((state) => this.visible = state);
         dbusclient.interface.update.connect((res) => {
-            if (settings.beats) {
+            if (Niu.Application.gsettings.get_boolean ("beats")) {
                 display_widget.time.time_str = res.bt;
             } else {
                 display_widget.time.time_str = res.ne;
             }
             popover_widget.cal.cal_str = res.ar;
             if (res.po) {
-                settings.pomodoro = res.po;
+                Niu.Application.gsettings.set_boolean ("pomodoro", res.po);
             }
         });
 
-        popover_widget.quit_niu.connect (() => {
-            dbusclient.interface.quit_niu ();
-            this.visible = false;
-        });
-        popover_widget.show_niu.connect (() => {
-            close ();
-            dbusclient.interface.show_niu ();
-        });
-        popover_widget.show_all ();
+        try {
+            try {
+                popover_widget.quit_niu.connect (() => {
+                    dbusclient.interface.quit_niu ();
+                    this.visible = false;
+                });
+                popover_widget.show_niu.connect (() => {
+                    close ();
+                    dbusclient.interface.show_niu ();
+                });
+                popover_widget.show_all ();
+            } catch (GLib.IOError err) {
+                warning (err.message);
+            }
+        } catch (GLib.DBusError err) {
+            warning (err.message);
+        }
     }
 
     /* Constructor */

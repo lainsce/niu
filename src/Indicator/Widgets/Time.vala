@@ -8,14 +8,13 @@ public class Niu.Widgets.TimeWidget : Gtk.Box {
         Gtk.IconTheme.get_default().add_resource_path("/com/github/lainsce/niu/icons");
 
         var icon = new Gtk.Image ();
-        var settings = AppSettings.get_default ();
-        if (settings.pomodoro) {
+        if (Niu.Application.gsettings.get_boolean ("pomodoro")) {
             icon.set_from_icon_name ("pomodoro-symbolic", (Gtk.IconSize)3);
         } else {
             icon.set_from_icon_name ("no-pomodoro-symbolic", (Gtk.IconSize)3);
         }
-        settings.changed.connect (() => {
-            if (settings.pomodoro) {
+        Niu.Application.gsettings.changed.connect (() => {
+            if (Niu.Application.gsettings.get_boolean ("pomodoro")) {
                 icon.set_from_icon_name ("pomodoro-symbolic", (Gtk.IconSize)3);
             } else {
                 icon.set_from_icon_name ("no-pomodoro-symbolic", (Gtk.IconSize)3);

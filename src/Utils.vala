@@ -6,8 +6,7 @@ namespace Niu.Utils {
         public bool po;
 
         public bool get_pomodoro_state () {
-            var settings = AppSettings.get_default ();
-            if (settings.pomodoro) {
+            if (Niu.Application.gsettings.get_boolean("pomodoro")) {
                 po = true;
             } else {
                 po = false;
