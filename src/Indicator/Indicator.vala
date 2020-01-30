@@ -5,24 +5,25 @@ public class Niu.Indicator : Wingpanel.Indicator {
     private DBusClient dbusclient;
 
     construct {
-        var settings = AppSettings.get_default ();
+        var settings = new GLib.Settings ("com.github.lainsce.niu");
+
         this.visible = false;
         display_widget = new Widgets.DisplayWidget ();
         popover_widget = new Widgets.PopoverWidget ();
 
         dbusclient = DBusClient.get_default ();
         dbusclient.niu_vanished.connect (() => this.visible = false);
-        dbusclient.niu_appeared.connect (() => this.visible = settings.indicator_state);
+        dbusclient.niu_appeared.connect (() => this.visible = settings.get_boolean ("indicator-state"));
         dbusclient.interface.indicator_state.connect((state) => this.visible = state);
         dbusclient.interface.update.connect((res) => {
-            if (settings.beats) {
+            if (settings.get_boolean ("beats")) {
                 display_widget.time.time_str = res.bt;
             } else {
                 display_widget.time.time_str = res.ne;
             }
             popover_widget.cal.cal_str = res.ar;
             if (res.po) {
-                settings.pomodoro = res.po;
+                settings.set_boolean ("pomodoro", res.po);
             }
         });
 
