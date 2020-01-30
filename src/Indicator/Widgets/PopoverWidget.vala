@@ -19,15 +19,16 @@ public class Niu.Widgets.PopoverWidget : Gtk.Grid {
         show_niu_button.hexpand = true;
         show_niu_button.clicked.connect (() => show_niu ());
 
-        start_pomodore_button = new Wingpanel.Widgets.Switch (_("Start Pomodoro…"), Niu.Application.gsettings.get_boolean ("pomodoro"));
+        var settings = AppSettings.get_default ();
+        start_pomodore_button = new Wingpanel.Widgets.Switch (_("Start Pomodoro…"), settings.pomodoro);
         start_pomodore_button.get_switch ().notify["active"].connect (() => {
-            Niu.Application.gsettings.set_boolean ("pomodoro", start_pomodore_button.get_switch ().state);
+            settings.pomodoro = start_pomodore_button.get_switch ().state;
         });
 
-        beats_button = new Wingpanel.Widgets.Switch (_("Show Only Beats"), Niu.Application.gsettings.get_boolean ("beats"));
+        beats_button = new Wingpanel.Widgets.Switch (_("Show Only Beats"), settings.beats);
         beats_button.margin_bottom = 6;
         beats_button.get_switch ().notify["active"].connect (() => {
-            Niu.Application.gsettings.set_boolean ("beats", beats_button.get_switch ().state);
+            settings.beats = beats_button.get_switch ().state;
         });
 
         quit_niu_button = new Gtk.ModelButton ();

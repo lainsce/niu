@@ -44,18 +44,20 @@ namespace Niu {
             updater = Updater.get_default ();
             dbusserver = DBusServer.get_default();
 
-            if (Niu.Application.gsettings.get_boolean ("pomodoro")) {
+            var settings = AppSettings.get_default ();
+
+            if (settings.pomodoro) {
                 set_timeouts ();
             }
-            Niu.Application.gsettings.changed.connect (() => {
-                if (Niu.Application.gsettings.get_boolean ("pomodoro")) {
+            settings.changed.connect (() => {
+                if (settings.pomodoro) {
                     set_timeouts ();
                 }
             });
 
             updater.update.connect ((res) => {
                 dbusserver.update (res);
-                dbusserver.indicator_state (Niu.Application.gsettings.get_boolean ("indicator-state"));
+                dbusserver.indicator_state (settings.indicator_state);
             });
             dbusserver.quit.connect (() => application.quit());
             dbusserver.show.connect (() => {
@@ -63,10 +65,11 @@ namespace Niu {
                 this.present();
                 this.show_all ();
             });
-            dbusserver.indicator_state (Niu.Application.gsettings.get_boolean ("indicator-state"));
+            dbusserver.indicator_state (settings.indicator_state);
         }
 
         construct {
+            var settings = AppSettings.get_default ();
             get_style_context ().add_class ("rounded");
             get_style_context ().add_class ("niu-window");
 
@@ -102,17 +105,17 @@ namespace Niu {
             indicator_label.halign = Gtk.Align.END;
 
             show_indicator_switch = new Gtk.Switch ();
-            show_indicator_switch.state = Niu.Application.gsettings.get_boolean ("indicator-state");
+            show_indicator_switch.state = settings.indicator_state;
 
             var background_label = new Gtk.Label (_("Start in background:"));
             background_label.halign = Gtk.Align.END;
 
             background_switch = new Gtk.Switch ();
-            background_switch.state = Niu.Application.gsettings.get_boolean ("background-state");;
+            background_switch.state = settings.background_state;
             set_background_switch_state ();
 
             background_switch.notify["active"].connect (() => {
-                Niu.Application.gsettings.set_boolean ("background-state", background_switch.state);
+                settings.background_state = background_switch.state;
 
                 if (!show_indicator_switch.active && background_switch.active) {
                     show_indicator_switch.active = true;
@@ -120,7 +123,7 @@ namespace Niu {
             });
 
             show_indicator_switch.notify["active"].connect (() => {
-                Niu.Application.gsettings.set_boolean ("indicator-state", show_indicator_switch.state);
+                settings.indicator_state = show_indicator_switch.state;
 
                 dbusserver.indicator_state (show_indicator_switch.state);
 
@@ -169,8 +172,8 @@ namespace Niu {
 
             set_labels ();
 
-            int x = Niu.Application.gsettings.get_int("window-x");
-            int y = Niu.Application.gsettings.get_int("window-y");
+            int x = settings.window_x;
+            int y = settings.window_y;
             if (x != -1 && y != -1) {
                 move (x, y);
             }
@@ -179,10 +182,10 @@ namespace Niu {
                     int window_x;
                     int window_y;
                     get_position (out window_x, out window_y);
-                    Niu.Application.gsettings.set_int("window-x", window_x);
-                    Niu.Application.gsettings.set_int("window-y", window_y);
+                    settings.window_x = window_x;
+                    settings.window_y = window_y;
 
-                    if (Niu.Application.gsettings.get_boolean("indicator-state")) {
+                    if (settings.indicator_state) {
                         this.hide_on_delete ();
                     } else {
                         dbusserver.indicator_state (false);
@@ -265,11 +268,6 @@ namespace Niu {
             a_entry.margin_top = 5;
             a_entry.margin_bottom = 5;
             a_entry.placeholder_text = _("Enter date…");
-            a_entry.icon_press.connect ((pos, event) => {
-                if (pos == Gtk.EntryIconPosition.SECONDARY) {
-                    a_entry.set_text ("");
-                }
-            });
 
             a_entry.changed.connect (() => {
                 if (a_entry.text.length > 0) {
@@ -285,6 +283,13 @@ namespace Niu {
             var r_label_style_context = r_label.get_style_context ();
             r_label_style_context.add_class (Granite.STYLE_CLASS_H3_LABEL);
             r_label_style_context.add_class ("niu-n");
+
+            a_entry.icon_press.connect ((pos, event) => {
+                if (pos == Gtk.EntryIconPosition.SECONDARY) {
+                    a_entry.set_text ("");
+                    r_label.label = "";
+                }
+            });
 
             a_entry_buffer.inserted_text.connect (() => {
                 entry_text = a_entry.get_text ();
@@ -339,11 +344,6 @@ namespace Niu {
             a_entry.margin_top = 5;
             a_entry.margin_bottom = 5;
             a_entry.placeholder_text = _("Enter date…");
-            a_entry.icon_press.connect ((pos, event) => {
-                if (pos == Gtk.EntryIconPosition.SECONDARY) {
-                    a_entry.set_text ("");
-                }
-            });
 
             a_entry.changed.connect (() => {
                 if (a_entry.text.length > 0) {
@@ -359,6 +359,13 @@ namespace Niu {
             var r_label_style_context = r_label.get_style_context ();
             r_label_style_context.add_class (Granite.STYLE_CLASS_H3_LABEL);
             r_label_style_context.add_class ("niu-n");
+
+            a_entry.icon_press.connect ((pos, event) => {
+                if (pos == Gtk.EntryIconPosition.SECONDARY) {
+                    a_entry.set_text ("");
+                    r_label.label = "";
+                }
+            });
 
             a_entry_buffer.inserted_text.connect (() => {
                 entry_text = a_entry.get_text ();
@@ -397,7 +404,8 @@ namespace Niu {
         }
 
         public void set_timeouts () {
-            if (Niu.Application.gsettings.get_boolean ("pomodoro")) {
+            var settings = AppSettings.get_default ();
+            if (settings.pomodoro) {
                 id1 = Timeout.add_seconds (777, () => {
                     pomodore_rest_notification ();
                     GLib.Source.remove (this.id2);
@@ -445,8 +453,9 @@ namespace Niu {
         }
 
         public bool set_labels () {
+            var settings = AppSettings.get_default ();
             var date = new GLib.DateTime.now_local ();
-            if (Niu.Application.gsettings.get_boolean ("beats")) {
+            if (settings.beats) {
                 n_label.set_label (res.get_neralie_beat_str (date));
             } else {
                 n_label.set_label (res.get_neralie_time_str (date));

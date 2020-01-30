@@ -1,6 +1,6 @@
 # Name our project
 project('com.github.lainsce.niu', ['vala', 'c'],
-    version: '1.1.0'
+    version: '1.0.4'
 )
 
 # Import main lib files
@@ -56,6 +56,7 @@ executable(
     'src/DBusServer.vala',
     'src/Updater.vala',
     'src/Utils.vala',
+    'src/Constants/AppSettings.vala',
     asresources,
     c_args: c_args,
     dependencies: [
@@ -71,7 +72,6 @@ executable(
     install : true
 )
 
-# If there's a better way to sync GLib.Settings between modules, tell me!
 shared_module(
     'niu',
     'src/Indicator/Indicator.vala',
@@ -81,10 +81,7 @@ shared_module(
     'src/Indicator/Widgets/Time.vala',
     'src/Indicator/Widgets/Cal.vala',
     'src/Utils.vala',
-    'src/Application.vala',
-    'src/MainWindow.vala',
-    'src/Updater.vala',
-    'src/DBusServer.vala',
+    'src/Constants/AppSettings.vala',
     icon_resources,
     c_args: c_args,
     dependencies: [
@@ -92,10 +89,6 @@ shared_module(
         dependency('granite'),
         dependency('gtk+-3.0'),
         dependency('wingpanel-2.0')
-    ],
-    vala_args: [
-        meson.source_root() + '/vapi/config.vapi',
-        '--vapidir=' + meson.source_root() + '/vapi/',
     ],
     install: true,
     install_dir : '/usr/lib/x86_64-linux-gnu/wingpanel/'
