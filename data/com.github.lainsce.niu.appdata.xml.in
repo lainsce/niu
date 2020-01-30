@@ -53,6 +53,14 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+        <release version="1.1.1" date="2020-02-07">
+            <description>
+                <p>Release: Conversion of Time</p>
+                <ul>
+                    <li>Minor fixes all around</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1.0" date="2020-01-30">
             <description>
                 <p>Release: Conversion of Energy</p>
