@@ -170,7 +170,7 @@ namespace Niu {
             set_labels ();
 
             int x = Niu.Application.gsettings.get_int("window-x");
-            int y = Niu.Application.gsettings.get_int("window-x");
+            int y = Niu.Application.gsettings.get_int("window-y");
             if (x != -1 && y != -1) {
                 move (x, y);
             }
