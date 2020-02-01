@@ -1,4 +1,4 @@
-public class Niu.Widgets.TimeWidget : Gtk.Box {
+public class Niu.Widgets.TimeWidget : Gtk.Grid {
     private Gtk.Label time_label;
     public string time_str {
         set { time_label.set_label ("%s".printf (value)); }
@@ -24,8 +24,8 @@ public class Niu.Widgets.TimeWidget : Gtk.Box {
         time_label = new Gtk.Label ("N/A");
         time_label.margin = 1;
 
-        pack_start (icon);
-        pack_start (time_label);
+        attach (icon, 0, 0, 1, 1);
+        attach (time_label, 1, 0, 1, 1);
     }
 
     public TimeWidget () {

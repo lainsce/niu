@@ -29,6 +29,7 @@ public class Niu.Widgets.PopoverWidget : Gtk.Grid {
         quit_niu_button.clicked.connect (() => quit_niu ());
 
         add (cal);
+        add (new Gtk.Separator (Gtk.Orientation.HORIZONTAL));
         add (show_niu_button);
         add (start_pomodore_button);
         add (beats_button);

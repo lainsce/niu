@@ -53,6 +53,14 @@
         <content_attribute id="money-gambling">none</content_attribute>
     </content_rating>
     <releases>
+        <release version="1.1.2" date="2020-02-14">
+            <description>
+                <p>Release: Butterflies</p>
+                <ul>
+                    <li>Some indicator styling fixes for better UI</li>
+                </ul>
+            </description>
+        </release>
         <release version="1.1.1" date="2020-02-07">
             <description>
                 <p>Release: Conversion of Time</p>
@@ -114,6 +122,6 @@
     </releases>
     <custom>
         <value key="x-appcenter-color-primary">#222222</value>
-        <value key="x-appcenter-color-primary-text">#00DAC7</value>
+        <value key="x-appcenter-color-primary-text">#75DAC2</value>
     </custom>
 </component>
