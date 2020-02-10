@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.niu package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.niu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-19 12:01+0200\n"
+"PO-Revision-Date: 2020-02-10 11:30+0100\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.0.6\n"
+"Last-Translator: \n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: de\n"
+
+#: src/Indicator/Widgets/Cal.vala:15
+msgid "Current Date"
+msgstr "Aktuelles Datum"
+
+#: src/Indicator/Widgets/PopoverWidget.vala:18
+msgid "Show Niu…"
+msgstr "Niu zeigen..."
+
+#: src/Indicator/Widgets/PopoverWidget.vala:23
+msgid "Start Pomodoro…"
+msgstr "Pomodoro beginnen..."
+
+#: src/Indicator/Widgets/PopoverWidget.vala:28
+msgid "Show Only Beats"
+msgstr "Nur Beats anzeigen"
+
+#: src/Indicator/Widgets/PopoverWidget.vala:35
+msgid "Quit Niu"
+msgstr "Beende Niu"
+
+#: src/MainWindow.vala:89
+msgid "In the Nataniev Time system, it is now…"
+msgstr "Im System der Nataniev-Zeit ist es jetzt..."
+
+#: src/MainWindow.vala:115
+msgid "Learn about Nataniev Time"
+msgstr "Erfahren Sie mehr über die Nataniev-Zeit"
+
+#: src/MainWindow.vala:131
+msgid "Settings"
+msgstr "Einstellungen"
+
+#: src/MainWindow.vala:145
+msgid "Show an indicator:"
+msgstr "Einen Indikator anzeigen:"
+
+#: src/MainWindow.vala:151
+msgid "Start in background:"
+msgstr "Im Hintergrund beginnen:"
+
+#: src/MainWindow.vala:248
+msgid "Go stand and stretch for a while before continuing."
+msgstr "Stellen Sie sich auf und strecken Sie sich für eine Weile, bevor Sie weitermachen."
+
+#: src/MainWindow.vala:256
+msgid "Go drink something before continuing."
+msgstr "Trinken Sie etwas, bevor Sie weitermachen."
+
+#: src/MainWindow.vala:264
+msgid "Go rest for a while before continuing."
+msgstr "Ruhen Sie sich eine Weile aus, bevor Sie weitermachen."
