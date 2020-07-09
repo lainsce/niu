@@ -18,6 +18,34 @@ window.unified decoration-overlay {
     color: @text_color;
     border-bottom: 1px solid alpha(black, 0.25);
 }
+
+.title {
+    font-weight: 700;
+}
+
+.destructive-button:hover {
+    color: #D07070;
+}
+
+.niu-toolbar .image-button {
+    border-radius: 8px;
+}
+
+.niu-toolbar .image-button image {
+    padding: 0 6px;
+    margin: -1px;
+}
+
+.niu-toolbar separator {
+    padding: 0;
+    margin: 0;
+}
+
+.niu-toolbar .image-button:focus,
+.niu-toolbar .image-button:hover {
+    background: shade(@base_color, 0.95);
+}
+
 .niu-switcher button {
     box-shadow: none;
     background-image: none;
