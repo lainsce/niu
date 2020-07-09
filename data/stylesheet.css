@@ -1,48 +1,72 @@
-@define-color colorPrimary #222222;
-@define-color textColorPrimary #FFFFFF;
+@define-color color_primary #151515;
+@define-color text_color #F7F7F7;
+@define-color accent #60C9C2;
+
+window.unified decoration,
+window.unified decoration-overlay {
+  border-radius: 8px;
+}
 
 .niu-window {
-    background: @colorPrimary;
-    color: @textColorPrimary;
+    background: @color_primary;
+    color: @text_color;
 }
 
 .niu-toolbar {
-    background: @colorPrimary;
-    color: @textColorPrimary;
-    border: none;
+    background: #000;
+    color: @text_color;
+    border-bottom: 1px solid alpha(black, 0.25);
+}
+.niu-switcher button {
     box-shadow: none;
+    background-image: none;
+    margin: 0 6px;
+    border-radius: 8px 8px 0 0;
+    background: mix(@accent, @base_color, 0.85);
 }
-
-.niu-button {
-    color: @textColorPrimary;
-    background: none;
-    padding: 0;
+.niu-switcher button:first-child {
+    border-bottom: 1px solid shade (mix (@accent, @base_color, 0.85), 0.88);
 }
-
-.bold {
-    font-weight: 700;
-    font-size: 1.66em;
-}
-
-.niu-info {
-    font-weight: 500;
-    font-size: 1.2em;
-}
-
-.niu-n {
-    font-weight: 300;
-    font-size: 3.33em;
-}
-
-.niu-sts {
-    background-color: #666;
+.niu-switcher button:not(:first-child):not(:last-child) {
+    box-shadow: none;
+    background-image: none;
+    border-radius: 0;
     border: 1px solid transparent;
 }
-
-.niu-sts > * {
+.niu-switcher button:last-child {
     box-shadow: none;
+    background-image: none;
+    border-radius: 0 0 8px 8px;
+    border-top: 1px solid shade (mix (@accent, @base_color, 0.85), 0.88);
 }
-
-.niu-sts > * > * {
-    color: #CCC;
+.niu-switcher button label {
+    font-weight: 700;
+    opacity: 0.8;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+}
+.niu-switcher button:not(:checked):not(:active) label {
+    font-weight: 500;
+    opacity: 0.8;
+    padding-bottom: 0.5em;
+    padding-top: 0.5em;
+}
+.niu-switcher button:not(:checked):not(:active) {
+    border-left: 1px solid shade (mix (@accent, @base_color, 0.85), 0.88);
+    border-right: 1px solid shade (mix (@accent, @base_color, 0.85), 0.88);
+    background: none;
+}
+.niu-switcher button {
+    background: shade (mix (@accent, @base_color, 0.85), 0.88);
+    border: 1px solid shade (mix (@accent, @base_color, 0.85), 0.88);
+}
+.niu-column {
+    background: mix (@accent, @base_color, 0.85);
+    border-right: 1px solid alpha (black, 0.25);
+    box-shadow: none;
+    padding: 6px;
+}
+.niu-entry {
+    border-radius: 8px;
+    padding: 5px;
 }

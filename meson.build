@@ -7,6 +7,13 @@ project('com.github.lainsce.niu', ['vala', 'c'],
 gnome = import('gnome')
 i18n = import('i18n')
 
+add_global_arguments([
+        '-DGETTEXT_PACKAGE="@0@"'.format(meson.project_name()),
+        '-DHANDY_USE_UNSTABLE_API'
+    ],
+    language:'c'
+)
+
 # Compile the GResources for this project
 asresources = gnome.compile_resources(
     'as-resources',
@@ -19,7 +26,7 @@ icon_resources = gnome.compile_resources(
     'gresource_icons',
     'data/icons/icon.gresource.xml',
     source_dir: 'data/icons',
-    c_name: 'as'
+    c_name: 'asi'
 )
 
 # Set this for convenience
@@ -63,6 +70,7 @@ executable(
         dependency('granite'),
         dependency('gobject-2.0'),
         dependency('gtk+-3.0'),
+        dependency('libhandy-1', version: '>=0.80.0'),
         m_dep,
     ],
     vala_args: [
@@ -83,11 +91,13 @@ shared_module(
     'src/Utils.vala',
     'src/Constants/AppSettings.vala',
     icon_resources,
+    asresources,
     c_args: c_args,
     dependencies: [
         dependency('glib-2.0'),
         dependency('granite'),
         dependency('gtk+-3.0'),
+        dependency('libhandy-1', version: '>=0.80.0'),
         dependency('wingpanel-2.0')
     ],
     install: true,

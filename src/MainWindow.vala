@@ -17,11 +17,17 @@
 * Boston, MA 02110-1301 USA
 */
 namespace Niu {
-    public class MainWindow : Gtk.ApplicationWindow {
+    public class MainWindow : Hdy.ApplicationWindow {
         private Gtk.Label a_label;
         private Gtk.Label n_label;
         private Gtk.Switch show_indicator_switch;
         private Gtk.Switch background_switch;
+        private Hdy.HeaderBar titlebar;
+        private Hdy.HeaderBar fauxtitlebar;
+        private Gtk.Grid grid;
+        private Gtk.Grid sgrid;
+        private Gtk.Box main_frame_grid;
+        private Hdy.Leaflet leaflet;
         private Utils.Resources res;
 
         public DBusServer dbusserver;
@@ -34,10 +40,7 @@ namespace Niu {
         public MainWindow (Gtk.Application application) {
             GLib.Object (application: application,
                          icon_name: "com.github.lainsce.niu",
-                         resizable: false,
-                         height_request: 320,
-                         width_request: 500,
-                         border_width: 6
+                         resizable: false
             );
             this.set_application (application);
 
@@ -70,20 +73,21 @@ namespace Niu {
 
         construct {
             var settings = AppSettings.get_default ();
-            get_style_context ().add_class ("rounded");
             get_style_context ().add_class ("niu-window");
 
             var provider = new Gtk.CssProvider ();
             provider.load_from_resource ("/com/github/lainsce/niu/stylesheet.css");
             Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
+            Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
 
-            var titlebar = new Gtk.HeaderBar ();
+            titlebar = new Hdy.HeaderBar ();
+            titlebar.set_size_request (-1,45);
+            titlebar.hexpand = true;
             titlebar.has_subtitle = false;
             titlebar.show_close_button = true;
             var titlebar_style_context = titlebar.get_style_context ();
             titlebar_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
             titlebar_style_context.add_class ("niu-toolbar");
-            set_titlebar (titlebar);
 
             var preferences_button = new Gtk.MenuButton ();
             preferences_button.has_tooltip = true;
@@ -144,29 +148,86 @@ namespace Niu {
             // nera_grid = Neralie grid, lets you convert a time to Neralie.
             var main_stack = new Gtk.Stack ();
             main_stack.margin = 12;
-            var main_stackswitcher = new Gtk.StackSwitcher ();
-            main_stackswitcher.stack = main_stack;
-            main_stackswitcher.halign = Gtk.Align.CENTER;
-            main_stackswitcher.homogeneous = true;
-            main_stackswitcher.margin_top = 0;
+            var main_stackswitcher = new Gtk.StackSwitcher () {
+                orientation = Gtk.Orientation.VERTICAL,
+                valign = Gtk.Align.CENTER,
+                stack = main_stack,
+                halign = Gtk.Align.CENTER,
+                homogeneous = true,
+                margin_top = 6
+            };
+            main_stackswitcher.set_size_request (185,-1);
             var main_stackswitcher_style_context = main_stackswitcher.get_style_context ();
             main_stackswitcher_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
-            main_stackswitcher_style_context.add_class ("niu-sts");
+            main_stackswitcher_style_context.add_class ("niu-switcher");
 
-            main_stack.add_titled (info_grid (), "informa", (_("Information")));
-            main_stack.add_titled (arve_grid (), "arvelie", (_("Arvelie")));
-            main_stack.add_titled (nera_grid (), "neralie", (_("Neralie")));
+            main_stack.add_titled (info_grid (), "informa", (_("INFORMATION")));
+            main_stack.add_titled (arve_grid (), "arvelie", (_("ARVELIE")));
+            main_stack.add_titled (nera_grid (), "neralie", (_("NERALIE")));
 
-            var main_grid = new Gtk.Grid ();
-            main_grid.expand = true;
-            main_grid.margin_top = 6;
-            main_grid.attach (main_stackswitcher, 0, 0, 1, 1);
-            main_grid.attach (main_stack, 0, 1, 1, 1);
+            var column_header = new Gtk.Label (_("VIEWS")) {
+                halign = Gtk.Align.START,
+                margin_start = 9
+            };
+            column_header.get_style_context ().add_class (Granite.STYLE_CLASS_H4_LABEL);
 
-            this.add (main_grid);
+            var column = new Gtk.Grid () {
+                orientation = Gtk.Orientation.VERTICAL,
+                vexpand = true
+            };
+            column.add (column_header);
+            column.add (main_stackswitcher);
+            column.get_style_context ().add_class ("niu-column");
+            
+            fauxtitlebar = new Hdy.HeaderBar () {
+                show_close_button = true,
+                has_subtitle = false
+            };
+            fauxtitlebar.set_size_request (200,45);
+            fauxtitlebar.get_style_context ().add_class ("niu-column");
+            fauxtitlebar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
+            
+            sgrid = new Gtk.Grid ();
+            sgrid.attach (fauxtitlebar, 0, 0, 1, 1);
+            sgrid.attach (column, 0, 1, 1, 1);
+            sgrid.show_all ();
+
+            main_frame_grid = new Gtk.Box (Gtk.Orientation.HORIZONTAL, 0) {
+                expand = true
+            };
+            main_frame_grid.get_style_context ().add_class ("niu-window");
+            main_frame_grid.add (main_stack);
+            
+            grid = new Gtk.Grid ();
+            grid.attach (titlebar, 1, 0, 1, 1);
+            grid.attach (main_frame_grid, 1, 1, 1, 1);
+            grid.show_all ();
+
+            var separator = new Gtk.Separator (Gtk.Orientation.VERTICAL);
+            var separator_cx = separator.get_style_context ();
+            separator_cx.add_class ("vsep");
+
+            leaflet = new Hdy.Leaflet () {
+                transition_type = Hdy.LeafletTransitionType.UNDER,
+                can_swipe_back = true
+            };
+            leaflet.add (sgrid);
+            leaflet.add (separator);
+            leaflet.add (grid);
+            leaflet.set_visible_child (grid);
+            leaflet.child_set_property (separator, "allow-visible", false);
+            leaflet.show_all ();
+
+            update ();
+            leaflet.notify["folded"].connect (() => {
+                update ();
+            });
+            
+            this.add (leaflet);
+            this.set_size_request (360, 360);
             this.show_all ();
 
-            Timeout.add_seconds (1, () => {
+            Timeout.add (16, () => {
                 set_labels ();
             });
 
@@ -195,28 +256,37 @@ namespace Niu {
             });
         }
 
+        private void update () {
+            if (leaflet != null && leaflet.get_folded ()) {
+                // On Mobile size, so.... have to have no buttons anywhere.
+                fauxtitlebar.set_decoration_layout (":");
+                titlebar.set_decoration_layout (":");
+            } else {
+                // Else you're on Desktop size, so business as usual.
+                fauxtitlebar.set_decoration_layout ("close:");
+                titlebar.set_decoration_layout (":");
+            }
+        }
+
         public Gtk.Grid info_grid () {
             //TRANSLATORS: Do not translate "Nataniev Time" as it is a proper name!
             var label = new Gtk.Label (_("In the Nataniev Time system, it is now…"));
             label.halign = Gtk.Align.START;
             label.hexpand = true;
             var label_style_context = label.get_style_context ();
-            label_style_context.add_class (Granite.STYLE_CLASS_H3_LABEL);
-            label_style_context.add_class ("niu-info");
+            label_style_context.add_class (Granite.STYLE_CLASS_H4_LABEL);
 
             a_label = new Gtk.Label ("");
             a_label.hexpand = true;
             a_label.halign = Gtk.Align.END;
             var a_label_style_context = a_label.get_style_context ();
             a_label_style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
-            a_label_style_context.add_class ("bold");
 
             n_label = new Gtk.Label ("");
             n_label.hexpand = true;
             n_label.halign = Gtk.Align.END;
             var n_label_style_context = n_label.get_style_context ();
-            n_label_style_context.add_class (Granite.STYLE_CLASS_H2_LABEL);
-            n_label_style_context.add_class ("niu-n");
+            n_label_style_context.add_class (Granite.STYLE_CLASS_H1_LABEL);
 
             var help_button = new Gtk.Button ();
             help_button.set_image (new Gtk.Image.from_icon_name ("help-contents-symbolic", Gtk.IconSize.SMALL_TOOLBAR));
@@ -226,8 +296,6 @@ namespace Niu {
             help_button.tooltip_text = _("Learn about Nataniev Time");
             var help_button_style_context = help_button.get_style_context ();
             help_button_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
-            help_button_style_context.add_class ("niu-button");
-            help_button_style_context.remove_class ("image-button");
 
             help_button.clicked.connect (() => {
                 try {
@@ -239,8 +307,6 @@ namespace Niu {
 
             var main_grid = new Gtk.Grid ();
             main_grid.orientation = Gtk.Orientation.VERTICAL;
-            main_grid.margin = 6;
-            main_grid.margin_top = main_grid.margin_bottom = 0;
             main_grid.row_homogeneous = true;
             main_grid.attach (label, 0, 0, 2, 1);
             main_grid.attach (n_label, 0, 1, 2, 1);
@@ -257,13 +323,14 @@ namespace Niu {
             label.halign = Gtk.Align.START;
             label.hexpand = true;
             var label_style_context = label.get_style_context ();
-            label_style_context.add_class (Granite.STYLE_CLASS_H3_LABEL);
-            label_style_context.add_class ("niu-info");
+            label_style_context.add_class (Granite.STYLE_CLASS_H4_LABEL);
 
             var a_entry_buffer = new Gtk.EntryBuffer ();
             var a_entry = new Gtk.Entry.with_buffer (a_entry_buffer);
+            a_entry.get_style_context ().add_class ("niu-entry");
             a_entry.vexpand = false;
             a_entry.hexpand = true;
+            a_entry.valign = Gtk.Align.CENTER;
             a_entry.has_focus = false;
             a_entry.margin_top = 5;
             a_entry.margin_bottom = 5;
@@ -310,8 +377,6 @@ namespace Niu {
             help_button.tooltip_text = _("A date should be of the format: YYYY-MM-DD.");
             var help_button_style_context = help_button.get_style_context ();
             help_button_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
-            help_button_style_context.add_class ("niu-button");
-            help_button_style_context.remove_class ("image-button");
 
             var main_grid = new Gtk.Grid ();
             main_grid.orientation = Gtk.Orientation.VERTICAL;
@@ -333,17 +398,19 @@ namespace Niu {
             label.halign = Gtk.Align.START;
             label.hexpand = true;
             var label_style_context = label.get_style_context ();
-            label_style_context.add_class (Granite.STYLE_CLASS_H3_LABEL);
-            label_style_context.add_class ("niu-info");
+            label_style_context.add_class (Granite.STYLE_CLASS_H4_LABEL);
 
             var a_entry_buffer = new Gtk.EntryBuffer ();
+            
             var a_entry = new Gtk.Entry.with_buffer (a_entry_buffer);
+            a_entry.get_style_context ().add_class ("niu-entry");
             a_entry.vexpand = false;
             a_entry.hexpand = true;
+            a_entry.valign = Gtk.Align.CENTER;
             a_entry.has_focus = false;
             a_entry.margin_top = 5;
             a_entry.margin_bottom = 5;
-            a_entry.placeholder_text = _("Enter date…");
+            a_entry.placeholder_text = _("Enter time…");
 
             a_entry.changed.connect (() => {
                 if (a_entry.text.length > 0) {
@@ -387,8 +454,6 @@ namespace Niu {
             help_button.tooltip_text = _("A time should be of the format: HH:MM:SS.\nWhere HH is 24-Hour.");
             var help_button_style_context = help_button.get_style_context ();
             help_button_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
-            help_button_style_context.add_class ("niu-button");
-            help_button_style_context.remove_class ("image-button");
 
             var main_grid = new Gtk.Grid ();
             main_grid.orientation = Gtk.Orientation.VERTICAL;

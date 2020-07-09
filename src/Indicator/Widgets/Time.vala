@@ -6,23 +6,22 @@ public class Niu.Widgets.TimeWidget : Gtk.Grid {
 
     construct {
         Gtk.IconTheme.get_default().add_resource_path("/com/github/lainsce/niu/icons");
+        var settings = new GLib.Settings ("com.github.lainsce.niu");
 
         var icon = new Gtk.Image ();
-        var settings = AppSettings.get_default ();
-        if (settings.pomodoro) {
+        if (settings.get_boolean ("pomodoro")) {
             icon.set_from_icon_name ("pomodoro-symbolic", (Gtk.IconSize)3);
         } else {
             icon.set_from_icon_name ("no-pomodoro-symbolic", (Gtk.IconSize)3);
         }
         settings.changed.connect (() => {
-            if (settings.pomodoro) {
+            if (settings.get_boolean ("pomodoro")) {
                 icon.set_from_icon_name ("pomodoro-symbolic", (Gtk.IconSize)3);
             } else {
                 icon.set_from_icon_name ("no-pomodoro-symbolic", (Gtk.IconSize)3);
             }
         });
-        time_label = new Gtk.Label ("N/A");
-        time_label.margin = 1;
+        time_label = new Gtk.Label ("XXX:XXX");
 
         attach (icon, 0, 0, 1, 1);
         attach (time_label, 1, 0, 1, 1);
