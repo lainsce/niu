@@ -79,12 +79,16 @@ namespace Niu {
             provider.load_from_resource ("/com/github/lainsce/niu/stylesheet.css");
             Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
             Gtk.Settings.get_default ().gtk_application_prefer_dark_theme = true;
+            // Ensure use of elementary theme and icons, accent color doesn't matter
+            Gtk.Settings.get_default().set_property("gtk-theme-name", "io.elementary.stylesheet.blueberry");
+            Gtk.Settings.get_default().set_property("gtk-icon-theme-name", "elementary");
 
             titlebar = new Hdy.HeaderBar ();
             titlebar.set_size_request (-1,45);
             titlebar.hexpand = true;
             titlebar.has_subtitle = false;
             titlebar.show_close_button = true;
+            titlebar.title = "Niu";
             var titlebar_style_context = titlebar.get_style_context ();
             titlebar_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
             titlebar_style_context.add_class ("niu-toolbar");
@@ -161,7 +165,7 @@ namespace Niu {
             main_stackswitcher_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
             main_stackswitcher_style_context.add_class ("niu-switcher");
 
-            main_stack.add_titled (info_grid (), "informa", (_("INFORMATION")));
+            main_stack.add_titled (info_grid (), "informa", (_("INFO")));
             main_stack.add_titled (arve_grid (), "arvelie", (_("ARVELIE")));
             main_stack.add_titled (nera_grid (), "neralie", (_("NERALIE")));
 

@@ -1,6 +1,7 @@
 @define-color color_primary #151515;
 @define-color text_color #F7F7F7;
 @define-color accent #60C9C2;
+@define-color accent_color_500 #60C9C2;
 
 window.unified decoration,
 window.unified decoration-overlay {
