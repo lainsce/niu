@@ -160,7 +160,7 @@ namespace Niu {
                 homogeneous = true,
                 margin_top = 6
             };
-            main_stackswitcher.set_size_request (185,-1);
+            main_stackswitcher.set_size_request (150,-1);
             var main_stackswitcher_style_context = main_stackswitcher.get_style_context ();
             main_stackswitcher_style_context.add_class (Gtk.STYLE_CLASS_FLAT);
             main_stackswitcher_style_context.add_class ("niu-switcher");
@@ -187,7 +187,7 @@ namespace Niu {
                 show_close_button = true,
                 has_subtitle = false
             };
-            fauxtitlebar.set_size_request (200,45);
+            fauxtitlebar.set_size_request (150,45);
             fauxtitlebar.get_style_context ().add_class ("niu-column");
             fauxtitlebar.get_style_context ().add_class (Gtk.STYLE_CLASS_FLAT);
             

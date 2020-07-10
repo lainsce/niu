@@ -91,7 +91,6 @@ shared_module(
     'src/Utils.vala',
     'src/Constants/AppSettings.vala',
     icon_resources,
-    asresources,
     c_args: c_args,
     dependencies: [
         dependency('glib-2.0'),

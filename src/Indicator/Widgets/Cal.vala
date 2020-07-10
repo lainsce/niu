@@ -4,9 +4,6 @@ public class Niu.Widgets.CalWidget : Gtk.Box {
         set { cal_label.set_label ("%s".printf (value)); }
     }
     construct {
-        var provider = new Gtk.CssProvider ();
-        provider.load_from_resource ("/com/github/lainsce/niu/stylesheet.css");
-        Gtk.StyleContext.add_provider_for_screen (Gdk.Screen.get_default (), provider, Gtk.STYLE_PROVIDER_PRIORITY_APPLICATION);
         cal_label = new Gtk.Label ("XXAXX");
         cal_label.width_chars = 7;
         var cal_style_context = cal_label.get_style_context ();
