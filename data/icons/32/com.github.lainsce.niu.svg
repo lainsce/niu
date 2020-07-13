@@ -13,7 +13,7 @@
    viewBox="0 0 32 32"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="com.github.lainsce.niu.svg">
   <sodipodi:namedview
      pagecolor="#ffffff"
@@ -24,13 +24,13 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="962"
+     inkscape:window-width="2560"
+     inkscape:window-height="943"
      id="namedview40"
      showgrid="true"
      inkscape:zoom="11.313708"
-     inkscape:cx="15.663271"
-     inkscape:cy="18.093454"
+     inkscape:cx="-0.15824393"
+     inkscape:cy="17.342153"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -185,20 +185,20 @@
          id="stop4814-7" />
     </linearGradient>
     <radialGradient
-       gradientTransform="matrix(-4.7487238e-8,0.78037803,-0.73522917,-5.3751304e-8,22.212601,0.6835227)"
+       gradientTransform="matrix(0,1.2000006,-0.73522917,-1.1826252e-8,22.212601,-1.6375212)"
        gradientUnits="userSpaceOnUse"
        xlink:href="#linearGradient2867-449-88-871-390-598-476-591-434-148-57-177-641-289-620-227-114-444-680-744-4-8-69-5-4-8-426-2-9-1-4-965"
        id="radialGradient3228"
-       fy="8.625761"
-       fx="0.3035326"
+       fy="8.4498844"
+       fx="-9.1914539"
        r="19.99999"
-       cy="8.6257601"
-       cx="15.026252" />
+       cy="8.4498835"
+       cx="5.5312648" />
     <linearGradient
        id="linearGradient2867-449-88-871-390-598-476-591-434-148-57-177-641-289-620-227-114-444-680-744-4-8-69-5-4-8-426-2-9-1-4-965">
       <stop
          offset="0"
-         style="stop-color:#4d4d4d;stop-opacity:1"
+         style="stop-color:#666666;stop-opacity:1"
          id="stop4036" />
       <stop
          offset="1"
@@ -275,12 +275,7 @@
      style="fill:none;stroke:#00dac7;stroke-width:0.59999996;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <path
      inkscape:connector-curvature="0"
-     d="m 29.5,14.999334 c 0,7.455845 -6.04417,13.5 -13.5,13.5 -7.45583,0 -13.5,-6.044155 -13.5,-13.5 C 2.5,7.5434907 8.54417,1.4993337 16,1.4993337 c 7.45583,0 13.5,6.044157 13.5,13.5000003 z"
-     id="path3421"
-     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:url(#linearGradient3221);stroke-width:0.99999994;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate" />
-  <path
-     inkscape:connector-curvature="0"
      d="m 16.523265,14.999334 a 0.52326529,0.52326529 0 1 1 -1.04653,0 0.52326529,0.52326529 0 1 1 1.04653,0 z"
      id="path4117"
-     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#485a6c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.0465306;marker:none;enable-background:accumulate" />
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1.0465306;marker:none;enable-background:accumulate" />
 </svg>

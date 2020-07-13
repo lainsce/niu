@@ -13,7 +13,7 @@
    viewBox="0 0 16 16"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="com.github.lainsce.niu.svg">
   <sodipodi:namedview
      pagecolor="#ffffff"
@@ -24,15 +24,15 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="962"
+     inkscape:window-width="2560"
+     inkscape:window-height="943"
      id="namedview4265"
      showgrid="true"
      showguides="true"
      inkscape:guide-bbox="true"
      inkscape:zoom="25.15625"
-     inkscape:cx="4.3329191"
-     inkscape:cy="5.2033234"
+     inkscape:cx="-2.7826089"
+     inkscape:cy="4.8654352"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -289,7 +289,7 @@
          id="stop4036" />
       <stop
          offset="1"
-         style="stop-color:#4d4d4d;stop-opacity:1"
+         style="stop-color:#1a1a1a;stop-opacity:1"
          id="stop4040" />
     </linearGradient>
     <linearGradient
@@ -466,7 +466,7 @@
        y1="3.6018722"
        x1="24.397675" />
     <linearGradient
-       gradientTransform="matrix(0.53069049,0,0,0.53069073,-30.303177,-6.7887052)"
+       gradientTransform="matrix(0.53069049,0,0,0.53069073,-46.803178,-0.7887053)"
        gradientUnits="userSpaceOnUse"
        xlink:href="#linearGradient4806-9"
        id="linearGradient3143"
@@ -475,15 +475,15 @@
        y1="15.369057"
        x1="71.204407" />
     <radialGradient
-       gradientTransform="matrix(-2.4562692e-8,0.40364919,-0.38029603,-2.780277e-8,11.213457,0.5951713)"
+       gradientTransform="matrix(0,0.62964584,-0.38029603,-1.0841617e-8,11.213457,-0.41929252)"
        gradientUnits="userSpaceOnUse"
        xlink:href="#linearGradient2867-449-88-871-390-598-476-591-434-148-57-177-641-289-620-227-114-444-680-744-4-8-69-5-4-8-426-2-9-1-4-965"
        id="radialGradient3154"
-       fy="8.625761"
-       fx="0.3035326"
+       fy="8.4498844"
+       fx="-10.233875"
        r="19.99999"
-       cy="8.6257601"
-       cx="15.026252" />
+       cy="8.4498835"
+       cx="4.4888439" />
   </defs>
   <metadata
      id="metadata7">
@@ -522,9 +522,4 @@
      d="M 8.1468055,8.4255904 4.5206056,8.2876367"
      id="path2314-7"
      style="fill:none;fill-opacity:1;stroke:#fafafa;stroke-width:0.59999996;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
-  <path
-     inkscape:connector-curvature="0"
-     d="M 14.500001,8.0000001 C 14.500001,11.589851 11.589845,14.5 8,14.5 4.410156,14.5 1.5,11.589851 1.5,8.0000001 1.5,4.4101498 4.410156,1.4999998 8,1.4999998 c 3.589845,0 6.500001,2.91015 6.500001,6.5000003 z"
-     id="path3421"
-     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:url(#linearGradient3143);stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate" />
 </svg>

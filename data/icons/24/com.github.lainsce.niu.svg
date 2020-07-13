@@ -13,7 +13,7 @@
    viewBox="0 0 24 24"
    id="svg2"
    version="1.1"
-   inkscape:version="0.92.3 (2405546, 2018-03-11)"
+   inkscape:version="0.92.5 (2060ec1f9f, 2020-04-08)"
    sodipodi:docname="com.github.lainsce.niu.svg">
   <sodipodi:namedview
      pagecolor="#ffffff"
@@ -24,13 +24,13 @@
      guidetolerance="10"
      inkscape:pageopacity="0"
      inkscape:pageshadow="2"
-     inkscape:window-width="1920"
-     inkscape:window-height="962"
+     inkscape:window-width="2560"
+     inkscape:window-height="943"
      id="namedview33"
      showgrid="true"
      inkscape:zoom="27.812867"
-     inkscape:cx="11.793736"
-     inkscape:cy="10.860626"
+     inkscape:cx="5.3578659"
+     inkscape:cy="10.555012"
      inkscape:window-x="0"
      inkscape:window-y="30"
      inkscape:window-maximized="1"
@@ -332,7 +332,7 @@
        id="linearGradient2867-449-88-871-390-598-476-591-434-148-57-177-641-289-620-227-114-444-680-744-4-8-69-5-4-8-426-2-9-1-4-965">
       <stop
          offset="0"
-         style="stop-color:#4d4d4d;stop-opacity:1"
+         style="stop-color:#666666;stop-opacity:1"
          id="stop4036" />
       <stop
          offset="1"
@@ -359,7 +359,7 @@
          id="stop4123" />
     </linearGradient>
     <linearGradient
-       gradientTransform="matrix(0.77562456,0,0,0.77562491,-43.981566,-10.614261)"
+       gradientTransform="matrix(0.77562456,0,0,0.77562491,-72.481567,-5.614261)"
        gradientUnits="userSpaceOnUse"
        xlink:href="#linearGradient1200"
        id="linearGradient3097"
@@ -368,15 +368,15 @@
        y1="15.369057"
        x1="71.204407" />
     <radialGradient
-       gradientTransform="matrix(-3.4387768e-8,0.56510885,-0.53241442,-3.8923876e-8,16.49884,0.6332404)"
+       gradientTransform="matrix(0,0.85000041,-0.53241442,0,16.49884,-1.0640638)"
        gradientUnits="userSpaceOnUse"
        xlink:href="#linearGradient2867-449-88-871-390-598-476-591-434-148-57-177-641-289-620-227-114-444-680-744-4-8-69-5-4-8-426-2-9-1-4-965"
        id="radialGradient3105"
-       fy="8.625761"
-       fx="0.3035326"
+       fy="8.4498844"
+       fx="-8.7650003"
        r="19.99999"
-       cy="8.6257601"
-       cx="15.026252" />
+       cy="8.4498835"
+       cx="5.9577193" />
     <radialGradient
        gradientTransform="matrix(0.11151981,0,0,0.03548359,0.94202894,14.166729)"
        gradientUnits="userSpaceOnUse"
@@ -499,12 +499,7 @@
      style="fill:none;stroke:#00dac7;stroke-width:0.59999996;stroke-linecap:round;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1" />
   <path
      inkscape:connector-curvature="0"
-     d="m 21.500001,11 c 0,5.246706 -4.253305,9.5 -9.500001,9.5 -5.2466951,0 -9.5000001,-4.253294 -9.5000001,-9.5 0,-5.2467039 4.253305,-9.5 9.5000001,-9.5 5.246696,0 9.500001,4.2532961 9.500001,9.5 z"
-     id="path3421"
-     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:none;stroke:url(#linearGradient3097);stroke-width:1;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1;marker:none;enable-background:accumulate" />
-  <path
-     inkscape:connector-curvature="0"
      d="M 11.999999,11.5 A 0.5,0.5 0 1 1 11,11.5 a 0.5,0.5 0 1 1 0.999999,0 z"
      id="path4117"
-     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#485a6c;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;enable-background:accumulate" />
+     style="color:#000000;display:inline;overflow:visible;visibility:visible;fill:#333333;fill-opacity:1;fill-rule:nonzero;stroke:none;stroke-width:1;marker:none;enable-background:accumulate" />
 </svg>
