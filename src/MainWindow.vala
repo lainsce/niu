@@ -72,6 +72,7 @@ namespace Niu {
         }
 
         construct {
+            Hdy.init ();
             var settings = AppSettings.get_default ();
             get_style_context ().add_class ("niu-window");
 
