@@ -14,9 +14,9 @@ window.unified decoration-overlay {
 }
 
 .niu-toolbar {
-    background: #000;
+    background: #151515;
+    box-shadow: none;
     color: @text_color;
-    border-bottom: 1px solid alpha(black, 0.25);
 }
 
 .title {
@@ -54,7 +54,7 @@ window.unified decoration-overlay {
     background: mix(@accent, @base_color, 0.85);
 }
 .niu-switcher button:first-child {
-    border-bottom: 1px solid shade (mix (@accent, @base_color, 0.85), 0.88);
+    border-bottom: 1px solid shade (@accent, 1.2);
 }
 .niu-switcher button:not(:first-child):not(:last-child) {
     box-shadow: none;
@@ -66,7 +66,7 @@ window.unified decoration-overlay {
     box-shadow: none;
     background-image: none;
     border-radius: 0 0 8px 8px;
-    border-top: 1px solid shade (mix (@accent, @base_color, 0.85), 0.88);
+    border-top: 1px solid shade (@accent, 1.2);
 }
 .niu-switcher button label {
     font-weight: 700;
@@ -81,13 +81,15 @@ window.unified decoration-overlay {
     padding-top: 0.5em;
 }
 .niu-switcher button:not(:checked):not(:active) {
-    border-left: 1px solid shade (mix (@accent, @base_color, 0.85), 0.88);
-    border-right: 1px solid shade (mix (@accent, @base_color, 0.85), 0.88);
+    border-left: 1px solid shade (@accent, 1.2);
+    border-right: 1px solid shade (@accent, 1.2);
     background: none;
+    color: #FFF;
 }
 .niu-switcher button {
-    background: shade (mix (@accent, @base_color, 0.85), 0.88);
-    border: 1px solid shade (mix (@accent, @base_color, 0.85), 0.88);
+    background: shade (@accent, 1.2);
+    border: 1px solid shade (@accent, 1.2);
+    color: #000;
 }
 .niu-column {
     background: mix (@accent, @base_color, 0.85);
