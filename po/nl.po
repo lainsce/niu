@@ -1,0 +1,71 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.niu package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.niu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-19 12:01+0200\n"
+"PO-Revision-Date: 2020-08-16 18:16+0200\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: Heimen Stoffels <vistausss@outlook.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: nl\n"
+
+#: src/Indicator/Widgets/Cal.vala:15
+msgid "Current Date"
+msgstr "Huidige datum"
+
+#: src/Indicator/Widgets/PopoverWidget.vala:18
+msgid "Show Niu…"
+msgstr "Niu-venster tonen…"
+
+#: src/Indicator/Widgets/PopoverWidget.vala:23
+msgid "Start Pomodoro…"
+msgstr "Pomodoro-tijdklok starten…"
+
+#: src/Indicator/Widgets/PopoverWidget.vala:28
+msgid "Show Only Beats"
+msgstr "Alleen slagen tonen"
+
+#: src/Indicator/Widgets/PopoverWidget.vala:35
+msgid "Quit Niu"
+msgstr "Niu afsluiten"
+
+#: src/MainWindow.vala:89
+msgid "In the Nataniev Time system, it is now…"
+msgstr "In het Nataniev-tijdsysteem is het nu…"
+
+#: src/MainWindow.vala:115
+msgid "Learn about Nataniev Time"
+msgstr "Meer over Nataniev Time"
+
+#: src/MainWindow.vala:131
+msgid "Settings"
+msgstr "Instellingen"
+
+#: src/MainWindow.vala:145
+msgid "Show an indicator:"
+msgstr "Indicator tonen:"
+
+#: src/MainWindow.vala:151
+msgid "Start in background:"
+msgstr "Geminimaliseerd opstarten:"
+
+#: src/MainWindow.vala:248
+msgid "Go stand and stretch for a while before continuing."
+msgstr "Rek jezelf even uit."
+
+#: src/MainWindow.vala:256
+msgid "Go drink something before continuing."
+msgstr "Ga even iets drinken."
+
+#: src/MainWindow.vala:264
+msgid "Go rest for a while before continuing."
+msgstr "Neem even een pauze."
