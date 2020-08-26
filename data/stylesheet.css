@@ -3,9 +3,8 @@
 @define-color accent #60C9C2;
 @define-color accent_color_500 #60C9C2;
 
-window.unified decoration,
-window.unified decoration-overlay {
-  border-radius: 8px;
+window.unified {
+    border-radius: 8px;
 }
 
 .niu-window {
