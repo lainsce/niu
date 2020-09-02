@@ -1,0 +1,71 @@
+# Portuguese (Portugal) translations for com.github.lainsce.niu package.
+# Copyright (C) 2019 THE com.github.lainsce.niu'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the com.github.lainsce.niu package.
+# André Barata <andretiagob@protonmail.com>, 2020.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: com.github.lainsce.niu\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2019-08-19 12:01+0200\n"
+"PO-Revision-Date: 2020-09-02 12:04+0100\n"
+"Language-Team: none\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+"Last-Translator: André Barata <andretiagob@protonmail.com>\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+"Language: pt\n"
+
+#: src/Indicator/Widgets/Cal.vala:15
+msgid "Current Date"
+msgstr "Data Atual"
+
+#: src/Indicator/Widgets/PopoverWidget.vala:18
+msgid "Show Niu…"
+msgstr "Mostrar Niu…"
+
+#: src/Indicator/Widgets/PopoverWidget.vala:23
+msgid "Start Pomodoro…"
+msgstr "Iniciar Pomodoro…"
+
+#: src/Indicator/Widgets/PopoverWidget.vala:28
+msgid "Show Only Beats"
+msgstr "Mostrar Apenas Batidas"
+
+#: src/Indicator/Widgets/PopoverWidget.vala:35
+msgid "Quit Niu"
+msgstr "Sair do Niu"
+
+#: src/MainWindow.vala:89
+msgid "In the Nataniev Time system, it is now…"
+msgstr "No Sistema de tempo de Nataniev, agora está…"
+
+#: src/MainWindow.vala:115
+msgid "Learn about Nataniev Time"
+msgstr "Aprenda mais sobre o Tempo de Nataniev"
+
+#: src/MainWindow.vala:131
+msgid "Settings"
+msgstr "Definições"
+
+#: src/MainWindow.vala:145
+msgid "Show an indicator:"
+msgstr "Mostrar um indicador:"
+
+#: src/MainWindow.vala:151
+msgid "Start in background:"
+msgstr "Iniciar no plano de fundo:"
+
+#: src/MainWindow.vala:248
+msgid "Go stand and stretch for a while before continuing."
+msgstr "Coloque-se em pé e faça alongamentos antes de continuar."
+
+#: src/MainWindow.vala:256
+msgid "Go drink something before continuing."
+msgstr "Vá beber alguma coisa antes de continuar."
+
+#: src/MainWindow.vala:264
+msgid "Go rest for a while before continuing."
+msgstr "Vá descansar um pouco antes de continuar."
